@@ -1,0 +1,67 @@
+name: Update aids daily
+
+on:
+  schedule:
+    # 06:00 UTC = 08:00 Europe/Madrid (07:00 during winter).
+    - cron: '0 6 * * *'
+  workflow_dispatch: {}  # allow manual trigger
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: astro/package-lock.json
+
+      - name: Install deps
+        working-directory: astro
+        run: npm ci
+
+      - name: Run fetcher
+        working-directory: astro
+        run: node scripts/fetch-aids.mjs
+
+      - name: File GitHub issues for new convocatorias
+        if: hashFiles('astro/tmp/new-convocatorias.jsonl') != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const lines = fs.readFileSync('astro/tmp/new-convocatorias.jsonl', 'utf8').trim().split('\n').filter(Boolean);
+            for (const line of lines) {
+              const issue = JSON.parse(line);
+              // Dedupe: skip if an open issue with the same title already exists
+              const { data: existing } = await github.rest.search.issuesAndPullRequests({
+                q: `repo:${context.repo.owner}/${context.repo.repo} is:issue is:open in:title ${JSON.stringify(issue.title)}`,
+              });
+              if (existing.total_count > 0) { console.log('skip dup:', issue.title); continue; }
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: issue.title,
+                body: issue.body,
+                labels: issue.labels,
+              });
+              console.log('filed:', issue.title);
+            }
+
+      - name: Commit changes if any
+        run: |
+          git config user.name "ajutscat-bot"
+          git config user.email "bot@ajuts.cat"
+          git add astro/src/content/aids
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "chore(aids): daily update $(date -u +%Y-%m-%d)"
+            git push
+          fi

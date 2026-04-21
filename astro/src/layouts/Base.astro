@@ -1,0 +1,61 @@
+---
+import Topbar from '../components/Topbar.astro';
+const { title, lang = 'ca' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title} — AjutsCat</title>
+  <meta name="description" content={lang === 'ca'
+    ? 'Ajuts i subvencions de Catalunya, finalment entendibles.'
+    : 'Ayudas y subvenciones de Catalunya, por fin entendibles.'} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href={`${base}tokens.css`} />
+  <link rel="stylesheet" href={`${base}app.css`} />
+  <link rel="stylesheet" href={`${base}pagefind/pagefind-ui.css`} />
+</head>
+<body data-accent="blue">
+  <Topbar lang={lang} />
+  <slot />
+  <div class="disclaimer">
+    <span class="disclaimer-icon">i</span>
+    <div>
+      <strong>{lang === 'ca' ? 'Info no oficial' : 'Info no oficial'}</strong>.
+      {lang === 'ca'
+        ? "AjutsCat és una capa humana sobre dades públiques. Verifica sempre a la font oficial abans de presentar la sol·licitud."
+        : "AjutsCat es una capa humana sobre datos públicos. Verifica siempre en la fuente oficial antes de presentar la solicitud."}
+    </div>
+  </div>
+  <footer class="footer">
+    <span class="footer-brand">AjutsCat</span>
+    <a href="#">{lang === 'ca' ? 'Sobre el projecte' : 'Sobre el proyecto'}</a>
+    <a href="#">{lang === 'ca' ? 'Codi font' : 'Código fuente'}</a>
+    <a href={`${base}${lang}/historic/`}>{lang === 'ca' ? 'Històric' : 'Histórico'}</a>
+    <a href="mailto:hola@ajuts.cat">{lang === 'ca' ? 'Contacte' : 'Contacto'}</a>
+    <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--ink-faint)">
+      {lang === 'ca' ? 'Dades públiques · sense tracking · accessible AA' : 'Datos públicos · sin tracking · accesible AA'}
+    </span>
+  </footer>
+  <script is:inline src={`${base}pagefind/pagefind-ui.js`}></script>
+  <script is:inline define:vars={{ searchLang: lang }}>
+    // Pagefind UI. The script above 404s in `astro dev` (pagefind only runs
+    // as a post-build step, so /pagefind/ exists in dist/ but not during dev).
+    // The guard below makes this a no-op when the script didn't load.
+    window.addEventListener('DOMContentLoaded', () => {
+      if (typeof PagefindUI === 'undefined' || !document.getElementById('search')) return;
+      new PagefindUI({
+        element: '#search',
+        showSubResults: true,
+        translations: searchLang === 'ca'
+          ? { placeholder: 'Cerca ajudes…', clear_search: 'Neteja', zero_results: 'Cap ajuda per [SEARCH_TERM]' }
+          : { placeholder: 'Buscar ayudas…', clear_search: 'Limpiar', zero_results: 'Ninguna ayuda para [SEARCH_TERM]' },
+      });
+    });
+  </script>
+</body>
+</html>

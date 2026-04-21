@@ -1,0 +1,128 @@
+/* AjutsCat — Design Tokens */
+:root {
+  /* Warm off-white palette, anti-institutional */
+  --bg: oklch(0.985 0.004 85);
+  --bg-subtle: oklch(0.965 0.006 85);
+  --bg-sunken: oklch(0.94 0.008 85);
+  --surface: oklch(1 0 0);
+  --surface-hover: oklch(0.97 0.005 85);
+
+  --ink: oklch(0.22 0.01 70);
+  --ink-soft: oklch(0.38 0.01 70);
+  --ink-muted: oklch(0.55 0.008 70);
+  --ink-faint: oklch(0.72 0.006 70);
+
+  --line: oklch(0.9 0.008 85);
+  --line-strong: oklch(0.82 0.012 85);
+
+  /* Single accent — ink blue */
+  --accent: oklch(0.42 0.14 255);
+  --accent-soft: oklch(0.94 0.04 255);
+  --accent-ink: oklch(0.28 0.12 255);
+
+  /* Traffic-light status colors (AA-accessible) */
+  --ok: oklch(0.55 0.16 145);
+  --ok-soft: oklch(0.94 0.06 145);
+  --ok-ink: oklch(0.32 0.12 145);
+
+  --warn: oklch(0.72 0.16 75);
+  --warn-soft: oklch(0.95 0.07 80);
+  --warn-ink: oklch(0.42 0.14 55);
+
+  --danger: oklch(0.58 0.2 25);
+  --danger-soft: oklch(0.95 0.05 25);
+  --danger-ink: oklch(0.38 0.18 25);
+
+  --urgent: oklch(0.62 0.24 30);
+
+  /* Type */
+  --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Spacing scale */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+  --s-20: 80px;
+
+  /* Radii — restrained */
+  --r-1: 3px;
+  --r-2: 6px;
+  --r-3: 10px;
+
+  /* Type scale */
+  --t-12: 12px;
+  --t-13: 13px;
+  --t-14: 14px;
+  --t-15: 15px;
+  --t-16: 16px;
+  --t-18: 18px;
+  --t-22: 22px;
+  --t-28: 28px;
+  --t-36: 36px;
+  --t-48: 48px;
+
+  /* Shadows (subtle) */
+  --shadow-1: 0 1px 0 oklch(0.9 0.008 85);
+  --shadow-card: 0 1px 2px oklch(0 0 0 / 0.04), 0 0 0 1px oklch(0.9 0.008 85);
+  --shadow-card-hover: 0 4px 14px oklch(0 0 0 / 0.06), 0 0 0 1px oklch(0.82 0.012 85);
+
+  --max-w: 1200px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: var(--t-15);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'ss01', 'cv11';
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+  padding: 0;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+input, select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* Mono: numbers should be tabular */
+.mono, code, kbd {
+  font-family: var(--mono);
+  font-feature-settings: 'zero', 'ss01';
+  letter-spacing: -0.01em;
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--r-1);
+}
+
+/* Scrollbar is neutral */
+::selection { background: var(--accent-soft); color: var(--accent-ink); }

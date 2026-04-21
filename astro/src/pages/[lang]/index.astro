@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import AidCard from '../../components/AidCard.astro';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'ca' } }, { params: { lang: 'es' } }];
+}
+const { lang } = Astro.params as { lang: 'ca' | 'es' };
+
+const all = (await getCollection('aids')).filter(a => !a.data.archivada && !a.data.draft);
+const today = new Date().toISOString().slice(0, 10);
+
+function computeStatus(a: any) {
+  if (today < a.data.fecha_apertura) return 'proxima';
+  if (today > a.data.fecha_cierre) return 'cerrada';
+  return 'abierta';
+}
+
+// Sort by urgency
+const aids = all.slice().sort((a, b) => {
+  const sa = computeStatus(a), sb = computeStatus(b);
+  const rank = (s: string) => s === 'abierta' ? 0 : s === 'proxima' ? 1 : 2;
+  if (rank(sa) !== rank(sb)) return rank(sa) - rank(sb);
+  if (sa === 'abierta') return new Date(a.data.fecha_cierre).getTime() - new Date(b.data.fecha_cierre).getTime();
+  if (sa === 'proxima') return new Date(a.data.fecha_apertura).getTime() - new Date(b.data.fecha_apertura).getTime();
+  return new Date(b.data.fecha_cierre).getTime() - new Date(a.data.fecha_cierre).getTime();
+});
+
+const stats = {
+  open: all.filter(a => computeStatus(a) === 'abierta').length,
+  soon: all.filter(a => computeStatus(a) === 'proxima').length,
+  closing: all.filter(a => {
+    const s = computeStatus(a);
+    const left = Math.ceil((new Date(a.data.fecha_cierre).getTime() - Date.now()) / 86400000);
+    return s === 'abierta' && left <= 7 && a.data.duracion_ventana_dias < 300;
+  }).length,
+};
+
+const t = {
+  ca: { tagline: 'Ajuts i subvencions de Catalunya, finalment entendibles.',
+        intro: 'Un catàleg viu de les ajudes d\'habitatge obertes ara mateix. Actualitzat cada dia, abans que s\'acabi la finestra.',
+        eyebrow: 'CATALUNYA · HABITATGE',
+        open: 'ajudes obertes ara', soon: 'obriran aviat', closing: 'tanquen aquesta setmana',
+        results: 'ajudes', wizard: 'A què tinc dret?' },
+  es: { tagline: 'Ayudas y subvenciones de Catalunya, por fin entendibles.',
+        intro: 'Un catálogo vivo de las ayudas de vivienda abiertas ahora mismo. Actualizado cada día, antes de que se acabe la ventana.',
+        eyebrow: 'CATALUNYA · VIVIENDA',
+        open: 'ayudas abiertas ahora', soon: 'abren pronto', closing: 'cierran esta semana',
+        results: 'ayudas', wizard: '¿A qué tengo derecho?' },
+}[lang];
+---
+<Base title={t.tagline} lang={lang}>
+  <section class="hero">
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      <span>{t.eyebrow} · {new Date().toLocaleDateString(lang === 'ca' ? 'ca-ES' : 'es-ES', { month: 'long', year: 'numeric' }).toUpperCase()}</span>
+    </div>
+    <h1>{t.tagline}</h1>
+    <p class="hero-intro">{t.intro}</p>
+    <a class="hero-cta" href="#wizard">{t.wizard}<span class="arrow">→</span></a>
+    <div class="hero-stats">
+      <div class="hero-stat ok"><span class="hero-stat-num">{stats.open}</span><span class="hero-stat-label">{t.open}</span></div>
+      <div class="hero-stat warn"><span class="hero-stat-num">{stats.soon}</span><span class="hero-stat-label">{t.soon}</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">{stats.closing}</span><span class="hero-stat-label">{t.closing}</span></div>
+    </div>
+  </section>
+  <main class="main">
+    <div id="search" style="margin: var(--s-4) 0 var(--s-8); --pagefind-ui-primary: var(--ink); --pagefind-ui-font: var(--sans); --pagefind-ui-border: var(--line); --pagefind-ui-border-radius: 6px;"></div>
+    <div class="result-count">
+      <span class="mono">{String(aids.length).padStart(2, '0')}</span> / {String(all.length).padStart(2, '0')} {t.results}
+    </div>
+    <div class="grid">
+      {aids.map(a => <AidCard aid={a.data} lang={lang} />)}
+    </div>
+  </main>
+</Base>

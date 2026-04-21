@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'ca' } }, { params: { lang: 'es' } }];
+}
+const { lang } = Astro.params as { lang: 'ca' | 'es' };
+const base = import.meta.env.BASE_URL;
+
+// Archived aids only. URL remains live (brief principle: never delete,
+// WhatsApp links must keep working).
+const archived = (await getCollection('aids'))
+  .filter(a => a.data.archivada)
+  .sort((a, b) => b.data.fecha_cierre.localeCompare(a.data.fecha_cierre));
+
+const fmt = (iso: string) =>
+  new Date(iso).toLocaleDateString(lang === 'ca' ? 'ca-ES' : 'es-ES', { day: 'numeric', month: 'short', year: 'numeric' });
+
+const t = {
+  ca: { title: 'Històric d\'ajudes', intro: 'Convocatòries que ja van tancar fa més de 90 dies. Solen reobrir-se cada any — aquí queda el rastre. L\'enllaç individual es manté viu.',
+        empty: 'Encara no hi ha cap ajuda arxivada.', closed: 'Tancada el', view: 'Veure fitxa →' },
+  es: { title: 'Histórico de ayudas', intro: 'Convocatorias que cerraron hace más de 90 días. Suelen reabrirse cada año — aquí queda el rastro. El enlace individual sigue vivo.',
+        empty: 'Aún no hay ninguna ayuda archivada.', closed: 'Cerró el', view: 'Ver ficha →' },
+}[lang];
+---
+<Base title={t.title} lang={lang}>
+  <main class="main">
+    <a class="back-link" href={`${base}${lang}/`}>← {lang === 'ca' ? 'Tornar' : 'Volver'}</a>
+    <h1 style="margin:var(--s-6) 0 var(--s-2)">{t.title}</h1>
+    <p style="color:var(--ink-muted);max-width:60ch;margin-bottom:var(--s-8)">{t.intro}</p>
+    {archived.length === 0 ? (
+      <p style="color:var(--ink-muted);font-style:italic">{t.empty}</p>
+    ) : (
+      <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:var(--s-4)">
+        {archived.map(a => (
+          <li style="border-top:1px solid var(--line);padding:var(--s-4) 0;display:flex;gap:var(--s-4);align-items:baseline;flex-wrap:wrap">
+            <a href={`${base}${lang}/${a.data.id}/`} style="font-weight:600;text-decoration:none">
+              {a.data[`nombre_${lang}`]}
+            </a>
+            <span style="font-family:var(--mono);font-size:12px;color:var(--ink-muted)">
+              {t.closed} {fmt(a.data.fecha_cierre)}
+            </span>
+            <span style="margin-left:auto;font-size:13px;color:var(--ink-muted)">
+              {a.data[`organismo_${lang}`]}
+            </span>
+          </li>
+        ))}
+      </ul>
+    )}
+  </main>
+</Base>

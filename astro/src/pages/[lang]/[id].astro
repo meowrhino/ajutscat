@@ -1,0 +1,158 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const all = await getCollection('aids');
+  return all.flatMap(a =>
+    (['ca', 'es'] as const).map(lang => ({
+      params: { lang, id: a.data.id },
+      props: { aid: a.data },
+    }))
+  );
+}
+const { lang } = Astro.params as { lang: 'ca' | 'es' };
+const { aid } = Astro.props;
+
+const today = new Date().toISOString().slice(0, 10);
+const status = today < aid.fecha_apertura ? 'proxima' : today > aid.fecha_cierre ? 'cerrada' : 'abierta';
+const daysLeft = Math.ceil((new Date(aid.fecha_cierre).getTime() - Date.now()) / 86400000);
+const urgent = status === 'abierta' && daysLeft <= 3;
+const bar = urgent ? 'urgent' : status === 'abierta' ? 'ok' : status === 'proxima' ? 'warn' : 'danger';
+
+const fmt = (iso: string) => new Date(iso).toLocaleDateString(lang === 'ca' ? 'ca-ES' : 'es-ES', { day: 'numeric', month: 'short', year: 'numeric' });
+const fmtShort = (iso: string) => new Date(iso).toLocaleDateString(lang === 'ca' ? 'ca-ES' : 'es-ES', { day: 'numeric', month: 'short' });
+
+const t = {
+  ca: { back: '← Tornar al llistat', amount: 'Quantia', age: 'Edat', income: 'Ingressos màx', org: 'Organisme',
+        req: 'Requisits', docs: 'Documentació necessària', hist: 'Convocatòries anteriors',
+        official: 'Anar al tràmit oficial →', updated: 'Actualitzat', year: 'Any', open: 'Obertura', close: 'Tancament',
+        days: 'Dies oberta', pass: 'Passa-ho:', copy: 'Copiar enllaç',
+        statusOpen: 'Oberta', statusClosed: 'Tancada', statusSoon: 'Pròximament', urgent: 'Urgent',
+        deadline: 'Tanca el', opens: 'Obre el', closed: 'Va tancar el', d: 'dies', d1: 'dia', longW: "Tot l'any",
+        staleTitle: 'Info desactualitzada. ', stale: "No hem pogut confirmar l'estat d'aquesta ajuda en les últimes 48h. Consulta la font oficial abans de fer res.",
+        noteHist: "Les finestres solen ser curtes i no s'anuncien amb antelació. Aquest històric et dóna una idea del patró."
+      },
+  es: { back: '← Volver al listado', amount: 'Cuantía', age: 'Edad', income: 'Ingresos máx', org: 'Organismo',
+        req: 'Requisitos', docs: 'Documentación necesaria', hist: 'Convocatorias anteriores',
+        official: 'Ir al trámite oficial →', updated: 'Actualizado', year: 'Año', open: 'Apertura', close: 'Cierre',
+        days: 'Días abierta', pass: 'Pásalo:', copy: 'Copiar enlace',
+        statusOpen: 'Abierta', statusClosed: 'Cerrada', statusSoon: 'Próximamente', urgent: 'Urgente',
+        deadline: 'Cierra el', opens: 'Abre el', closed: 'Cerró el', d: 'días', d1: 'día', longW: 'Todo el año',
+        staleTitle: 'Info desactualizada. ', stale: 'No hemos podido confirmar el estado de esta ayuda en las últimas 48h. Consulta la fuente oficial antes de hacer nada.',
+        noteHist: 'Las ventanas suelen ser cortas y no se anuncian con antelación. Este histórico te da una idea del patrón.'
+      },
+}[lang];
+
+const longWindow = aid.duracion_ventana_dias >= 300;
+const statusBig = status === 'abierta'
+  ? (longWindow ? t.longW : `${daysLeft} ${daysLeft === 1 ? t.d1 : t.d}`)
+  : status === 'proxima' ? fmt(aid.fecha_apertura) : fmt(aid.fecha_cierre);
+const base = import.meta.env.BASE_URL;
+const hist = aid.historico.slice().sort((a, b) => b.ano - a.ano);
+const maxDias = Math.max(...hist.map(h => h.dias), 1);
+---
+<Base title={aid[`nombre_${lang}`]} lang={lang}>
+  <div class="detail-page">
+    <a class="back-link" href={`${base}${lang}/`}>{t.back}</a>
+    <div class="detail-hero">
+      <div class={`detail-hero-bar ${bar}`}></div>
+      <div style="flex:1;min-width:0">
+        <div style="margin-bottom:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+          <span class={`card-status ${urgent ? 'urgent' : status === 'abierta' ? 'ok' : status === 'proxima' ? 'warn' : 'danger'}`}>
+            <span class="dot"></span>{urgent ? t.urgent : status === 'abierta' ? t.statusOpen : status === 'proxima' ? t.statusSoon : t.statusClosed}
+          </span>
+          {aid.stale && <span class="stale-badge">{lang === 'ca' ? '⚠ Desactualitzat' : '⚠ Desactualizado'}</span>}
+        </div>
+        <h1>{aid[`nombre_${lang}`]}</h1>
+        <p class="detail-hero-sub">{aid[`subtitle_${lang}`]}</p>
+        <div class="detail-hero-meta">
+          <div class="detail-meta-item"><span class="detail-meta-label">{t.amount}</span><span class="detail-meta-value">{aid[`cuantia_${lang}`]}</span></div>
+          <div class="detail-meta-item"><span class="detail-meta-label">{t.age}</span><span class="detail-meta-value mono">{aid.edad_max >= 120 ? `${aid.edad_min}+` : `${aid.edad_min}–${aid.edad_max}`}</span></div>
+          {aid.ingresos_max && <div class="detail-meta-item"><span class="detail-meta-label">{t.income}</span><span class="detail-meta-value mono">{aid.ingresos_max.toLocaleString('es-ES')} €</span></div>}
+          <div class="detail-meta-item"><span class="detail-meta-label">{t.org}</span><span class="detail-meta-value">{aid[`organismo_${lang}`]}</span></div>
+        </div>
+        <div class={`detail-status-block ${urgent ? 'urgent' : ''}`}>
+          <div class="detail-status-line">
+            <span class={`big mono ${urgent ? 'danger' : ''}`}>{statusBig}</span>
+          </div>
+          <div style="font-size:13px;color:var(--ink-muted)">
+            {status === 'abierta' && !longWindow && `${t.deadline} ${fmt(aid.fecha_cierre)}`}
+            {status === 'abierta' && longWindow && (lang === 'ca' ? "La convocatòria es manté oberta durant tot l'any." : 'La convocatoria permanece abierta durante todo el año.')}
+            {status === 'proxima' && (lang === 'ca' ? "Data prevista d'obertura." : 'Fecha prevista de apertura.')}
+            {status === 'cerrada' && (lang === 'ca' ? "La pròxima convocatòria se sol obrir a la primavera." : 'La próxima convocatoria suele abrirse en primavera.')}
+          </div>
+        </div>
+        <div class="detail-cta">
+          <a class="btn primary" href={aid.fuente_oficial} target="_blank" rel="noopener noreferrer">{t.official}</a>
+          <span style="font-size:12px;color:var(--ink-muted);font-family:var(--mono);align-self:center">{t.updated} {fmt(aid.ultima_actualizacion)}</span>
+        </div>
+        {aid.stale && (
+          <div class="stale-banner">
+            <span style="font-size:14px">⚠</span>
+            <span><strong>{t.staleTitle}</strong>{t.stale}</span>
+          </div>
+        )}
+        <div class="share-row">
+          <span>{t.pass}</span>
+          <a class="share-btn wa" target="_blank" rel="noopener noreferrer"
+             href={`https://wa.me/?text=${encodeURIComponent(`${aid[`nombre_${lang}`]} — ${statusBig}. AjutsCat: https://ajuts.cat/${lang}/${aid.id}`)}`}>
+            WhatsApp
+          </a>
+          <button class="share-btn" onclick={`navigator.clipboard && navigator.clipboard.writeText('https://ajuts.cat/${lang}/${aid.id}')`}>{t.copy}</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="section">
+      <h2 class="section-title">{t.req}</h2>
+      <ul class="req-list">
+        {aid[`requisitos_${lang}`].map((r: string) => <li>{r}</li>)}
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">{t.docs}</h2>
+      <ul class="doc-list" id="doc-list">
+        {aid[`documentacion_${lang}`].map((d: string, i: number) => (
+          <li data-idx={i}>
+            <span class="doc-check">
+              <svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2 2 4-4" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="doc-label">{d}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">{t.hist}</h2>
+      <div class="history-table">
+        <div class="history-row header">
+          <span>{t.year}</span><span>{t.open}</span><span>{t.close}</span><span>{t.days}</span>
+          <span>{lang === 'ca' ? 'Durada visual' : 'Duración visual'}</span>
+        </div>
+        {hist.map(r => {
+          const cls = r.dias > 30 ? 'long' : r.dias > 7 ? 'medium' : 'short';
+          return (
+            <div class={`history-row${r.ano === new Date().getFullYear() ? ' this-year' : ''}`}>
+              <span class="mono">{r.ano}</span>
+              <span class="mono">{fmtShort(r.apertura)}</span>
+              <span class="mono">{fmtShort(r.cierre)}</span>
+              <span class="mono">{r.dias}d</span>
+              <span><span class={`history-bar ${cls}`} style={`width:${Math.max(4, (r.dias / maxDias) * 100)}%`}></span></span>
+            </div>
+          );
+        })}
+      </div>
+      <p style="font-size:13px;color:var(--ink-muted);margin-top:12px">{t.noteHist}</p>
+    </section>
+  </div>
+</Base>
+
+<script>
+  // Simple checkbox toggle for the docs list
+  document.querySelectorAll('#doc-list li').forEach(li => {
+    li.addEventListener('click', () => li.classList.toggle('checked'));
+  });
+</script>

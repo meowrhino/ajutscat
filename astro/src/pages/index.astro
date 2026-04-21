@@ -1,0 +1,15 @@
+---
+// Redirect root → /ca/
+---
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="refresh" content={`0; url=${import.meta.env.BASE_URL}ca/`} />
+  <link rel="canonical" href={`${import.meta.env.BASE_URL}ca/`} />
+  <title>AjutsCat</title>
+</head>
+<body>
+  <p>Redirecting to <a href={`${import.meta.env.BASE_URL}ca/`}>AjutsCat</a>…</p>
+</body>
+</html>

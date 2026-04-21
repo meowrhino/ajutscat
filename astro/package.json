@@ -1,0 +1,19 @@
+{
+  "name": "ajutscat",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && pagefind --site dist",
+    "preview": "astro preview",
+    "fetch": "node scripts/fetch-aids.mjs"
+  },
+  "dependencies": {
+    "astro": "^4.16.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "pagefind": "^1.1.1"
+  }
+}

@@ -1,0 +1,87 @@
+---
+import type { CollectionEntry } from 'astro:content';
+type Aid = CollectionEntry<'aids'>['data'];
+const { aid, lang } = Astro.props as { aid: Aid; lang: 'ca' | 'es' };
+
+// Compute status from today vs. window
+const today = new Date().toISOString().slice(0, 10);
+let status: 'abierta' | 'cerrada' | 'proxima';
+if (today < aid.fecha_apertura) status = 'proxima';
+else if (today > aid.fecha_cierre) status = 'cerrada';
+else status = 'abierta';
+
+const daysLeft = Math.ceil((new Date(aid.fecha_cierre).getTime() - Date.now()) / 86400000);
+const urgent = status === 'abierta' && daysLeft <= 3;
+const longWindow = aid.duracion_ventana_dias >= 300;
+
+const bar = urgent ? 'urgent' : status === 'abierta' ? 'ok' : status === 'proxima' ? 'warn' : 'danger';
+
+const open = new Date(aid.fecha_apertura).getTime();
+const close = new Date(aid.fecha_cierre).getTime();
+const progress = status === 'abierta'
+  ? Math.max(0, Math.min(1, (Date.now() - open) / (close - open)))
+  : null;
+const progressKind = progress == null ? '' : progress > 0.85 ? 'danger' : progress > 0.65 ? 'warn' : '';
+
+const t = {
+  ca: { status_abierta: 'Oberta', status_cerrada: 'Tancada', status_proxima: 'Pròximament', urgent: 'Urgent',
+        amount: 'Quantia', age: 'Edat', deadline: 'Tanca el', opens: 'Obre el', closed: 'Va tancar el',
+        days: 'dies', day: 'dia', longWindow: 'Tot l\'any' },
+  es: { status_abierta: 'Abierta', status_cerrada: 'Cerrada', status_proxima: 'Próximamente', urgent: 'Urgente',
+        amount: 'Cuantía', age: 'Edad', deadline: 'Cierra el', opens: 'Abre el', closed: 'Cerró el',
+        days: 'días', day: 'día', longWindow: 'Todo el año' }
+}[lang];
+
+const fmtShort = (iso: string) =>
+  new Date(iso).toLocaleDateString(lang === 'ca' ? 'ca-ES' : 'es-ES', { day: 'numeric', month: 'short' });
+
+const href = `${import.meta.env.BASE_URL}${lang}/${aid.id}/`.replace(/\/+/g, '/');
+
+const countdownText = status === 'abierta'
+  ? (longWindow ? t.longWindow : `${daysLeft} ${daysLeft === 1 ? t.day : t.days}`)
+  : status === 'proxima'
+    ? `${t.opens} ${fmtShort(aid.fecha_apertura)}`
+    : `${t.closed} ${fmtShort(aid.fecha_cierre)}`;
+---
+<a class="card" href={href} aria-label={aid[`nombre_${lang}`]}>
+  <div class={`card-bar ${bar}`}></div>
+  <div class="card-body">
+    <div class="card-top">
+      <span style="display:inline-flex;gap:6px;flex-wrap:wrap">
+        <span class={`card-status ${urgent ? 'urgent' : status === 'abierta' ? 'ok' : status === 'proxima' ? 'warn' : 'danger'}`}>
+          <span class="dot"></span>
+          {urgent ? t.urgent : status === 'abierta' ? t.status_abierta : status === 'proxima' ? t.status_proxima : t.status_cerrada}
+        </span>
+        {aid.stale && <span class="stale-badge">⚠</span>}
+      </span>
+      <span class={`card-countdown ${urgent ? 'urgent' : ''}`} set:text={countdownText}></span>
+    </div>
+    <div>
+      <h3 class="card-title">{aid[`nombre_${lang}`]}</h3>
+      <p class="card-subtitle">{aid[`subtitle_${lang}`]}</p>
+    </div>
+    <div class="card-meta">
+      <div class="meta-row">
+        <span class="meta-label">{t.amount}</span>
+        <span class="meta-value">{aid[`cuantia_${lang}`]}</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">{t.age}</span>
+        <span class="meta-value mono">
+          {aid.edad_max >= 120 ? `${aid.edad_min}+` : `${aid.edad_min}–${aid.edad_max}`}
+        </span>
+      </div>
+    </div>
+    {progress != null && !longWindow && (
+      <div>
+        <div class="card-progress">
+          <div class={`card-progress-fill ${progressKind}`} style={`width:${progress * 100}%`}></div>
+        </div>
+        <div class="card-progress-label">
+          <span>{fmtShort(aid.fecha_apertura)}</span>
+          <span>{fmtShort(aid.fecha_cierre)}</span>
+        </div>
+      </div>
+    )}
+  </div>
+</a>
