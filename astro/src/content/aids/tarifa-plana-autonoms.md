@@ -22,7 +22,7 @@ duracion_ventana_dias: 365
 fuente_oficial: https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/CotizacionRecaudacionTrabajadores/36537
 organismo_ca: Tresoreria General de la Seguretat Social
 organismo_es: Tesorería General de la Seguridad Social
-ultima_actualizacion: 2026-04-21
+ultima_actualizacion: 2026-04-22
 stale: false
 archivada: false
 draft: false

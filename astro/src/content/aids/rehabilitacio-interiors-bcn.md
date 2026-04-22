@@ -17,13 +17,13 @@ ambito: barcelona
 zonas_especificas:
   - Barcelona ciutat
 estado: abierta
-fecha_apertura: 2026-01-08
+fecha_apertura: 2026-01-07
 fecha_cierre: 2026-11-30
-duracion_ventana_dias: 327
+duracion_ventana_dias: 328
 fuente_oficial: https://habitatge.barcelona/
 organismo_ca: "Consorci de l'Habitatge de Barcelona"
 organismo_es: Consorcio de la Vivienda de Barcelona
-ultima_actualizacion: 2026-04-21
+ultima_actualizacion: 2026-04-22
 stale: false
 draft: true
 requisitos_ca:
@@ -49,6 +49,7 @@ documentacion_es:
   - Fotografías del estado previo
   - Compromiso de incorporación a la Bolsa
 historico: []
+fetcher_last_ok: 2026-04-22T07:24:17.488Z
 ---
 
 # Rehabilitació interiors · Borsa BCN
