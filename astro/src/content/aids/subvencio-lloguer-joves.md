@@ -21,7 +21,7 @@ duracion_ventana_dias: 17
 fuente_oficial: https://habitatge.gencat.cat/
 organismo_ca: "Agència de l'Habitatge de Catalunya"
 organismo_es: Agencia de la Vivienda de Cataluña
-ultima_actualizacion: 2026-04-22
+ultima_actualizacion: 2026-04-23
 stale: false
 requisitos_ca:
   - Tenir menys de 36 anys.

@@ -23,7 +23,7 @@ duracion_ventana_dias: 328
 fuente_oficial: https://habitatge.barcelona/
 organismo_ca: "Consorci de l'Habitatge de Barcelona"
 organismo_es: Consorcio de la Vivienda de Barcelona
-ultima_actualizacion: 2026-04-22
+ultima_actualizacion: 2026-04-23
 stale: false
 draft: true
 requisitos_ca:
@@ -49,7 +49,7 @@ documentacion_es:
   - Fotografías del estado previo
   - Compromiso de incorporación a la Bolsa
 historico: []
-fetcher_last_ok: 2026-04-22T07:24:17.488Z
+fetcher_last_ok: 2026-04-23T07:27:59.907Z
 ---
 
 # Rehabilitació interiors · Borsa BCN

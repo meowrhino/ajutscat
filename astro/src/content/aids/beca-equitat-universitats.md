@@ -22,7 +22,7 @@ duracion_ventana_dias: 46
 fuente_oficial: https://agaur.gencat.cat/ca/beques-i-ajuts/beca-equitat
 organismo_ca: "AGAUR — Agència de Gestió d'Ajuts Universitaris"
 organismo_es: AGAUR — Agencia de Gestión de Ayudas Universitarias
-ultima_actualizacion: 2026-04-22
+ultima_actualizacion: 2026-04-23
 stale: false
 archivada: false
 draft: false
