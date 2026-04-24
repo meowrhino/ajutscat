@@ -15,14 +15,14 @@ ingresos_max: null
 ambito: barcelona
 zonas_especificas: 
   - Barcelona ciutat
-estado: abierta
+estado: cerrada
 fecha_apertura: 2026-02-15
 fecha_cierre: 2026-04-23
 duracion_ventana_dias: 68
 fuente_oficial: https://habitatge.barcelona/
 organismo_ca: "Consorci de l'Habitatge de Barcelona"
 organismo_es: Consorcio de la Vivienda de Barcelona
-ultima_actualizacion: 2026-04-23
+ultima_actualizacion: 2026-04-24
 stale: false
 requisitos_ca:
   - Edifici situat a Barcelona ciutat.

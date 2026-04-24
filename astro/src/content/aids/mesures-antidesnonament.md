@@ -14,14 +14,14 @@ edad_max: 120
 ingresos_max: 22800
 ambito: catalunya
 zonas_especificas: []
-estado: abierta
+estado: cerrada
 fecha_apertura: 2026-04-18
 fecha_cierre: 2026-04-23
 duracion_ventana_dias: 6
 fuente_oficial: https://habitatge.gencat.cat/
 organismo_ca: "Agència de l'Habitatge de Catalunya"
 organismo_es: Agencia de la Vivienda de Cataluña
-ultima_actualizacion: 2026-04-23
+ultima_actualizacion: 2026-04-24
 stale: false
 requisitos_ca:
   - Demanda judicial activa o notificació de desnonament.

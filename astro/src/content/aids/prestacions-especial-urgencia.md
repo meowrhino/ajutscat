@@ -21,7 +21,7 @@ duracion_ventana_dias: 365
 fuente_oficial: https://habitatge.gencat.cat/
 organismo_ca: "Agència de l'Habitatge de Catalunya"
 organismo_es: Agencia de la Vivienda de Cataluña
-ultima_actualizacion: 2026-04-23
+ultima_actualizacion: 2026-04-24
 stale: true
 requisitos_ca:
   - "Risc real d'exclusió residencial."
