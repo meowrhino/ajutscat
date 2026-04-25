@@ -22,7 +22,7 @@ fuente_oficial: https://tramits.gencat.cat/ca/tramits/tramits-temes/Subvencio-Bo
 bdns_id: "890390"
 organismo_ca: "Agència de l'Habitatge de Catalunya"
 organismo_es: Agencia de la Vivienda de Cataluña
-ultima_actualizacion: 2026-04-24
+ultima_actualizacion: 2026-04-25
 stale: false
 requisitos_ca:
   - Tenir entre 18 i 35 anys (inclosos).
@@ -67,7 +67,7 @@ historico:
     apertura: 2026-03-09
     cierre: 2026-03-13
     dias: 5
-fetcher_last_ok: 2026-04-24T07:53:10.058Z
+fetcher_last_ok: 2026-04-25T07:06:50.439Z
 ---
 
 # Bo Lloguer Jove

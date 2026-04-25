@@ -14,14 +14,14 @@ edad_max: 120
 ingresos_max: 20400
 ambito: catalunya
 zonas_especificas: []
-estado: abierta
+estado: cerrada
 fecha_apertura: 2026-04-07
 fecha_cierre: 2026-04-24
 duracion_ventana_dias: 18
 fuente_oficial: https://habitatge.gencat.cat/
 organismo_ca: "Agència de l'Habitatge de Catalunya"
 organismo_es: Agencia de la Vivienda de Cataluña
-ultima_actualizacion: 2026-04-24
+ultima_actualizacion: 2026-04-25
 stale: false
 requisitos_ca:
   - Tenir 65 anys o més.

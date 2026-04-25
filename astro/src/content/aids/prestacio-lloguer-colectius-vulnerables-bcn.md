@@ -23,7 +23,7 @@ duracion_ventana_dias: 29
 fuente_oficial: https://habitatge.barcelona/
 organismo_ca: "Consorci de l'Habitatge de Barcelona"
 organismo_es: Consorcio de la Vivienda de Barcelona
-ultima_actualizacion: 2026-04-24
+ultima_actualizacion: 2026-04-25
 stale: true
 draft: true
 requisitos_ca:
