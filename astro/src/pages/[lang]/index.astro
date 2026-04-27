@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import AidCard from '../../components/AidCard.astro';
+import Wizard from '../../components/Wizard.astro';
 
 export function getStaticPaths() {
   return [{ params: { lang: 'ca' } }, { params: { lang: 'es' } }];
@@ -68,10 +69,49 @@ const t = {
   <main class="main" data-pagefind-body>
     <div id="search" style="margin: var(--s-4) 0 var(--s-8); --pagefind-ui-primary: var(--ink); --pagefind-ui-font: var(--sans); --pagefind-ui-border: var(--line); --pagefind-ui-border-radius: 6px;"></div>
     <div class="result-count">
-      <span class="mono">{String(aids.length).padStart(2, '0')}</span> / {String(all.length).padStart(2, '0')} {t.results}
+      <span class="mono" id="result-count-num">{String(aids.length).padStart(2, '0')}</span> / {String(all.length).padStart(2, '0')} {t.results}
+      <a id="clear-filter" href={`${import.meta.env.BASE_URL}${lang}/`} style="margin-left:var(--s-4);font-family:var(--mono);font-size:11px;color:var(--ink-muted);display:none">
+        {lang === 'ca' ? '× netejar filtre' : '× limpiar filtro'}
+      </a>
     </div>
     <div class="grid">
       {aids.map(a => <AidCard aid={a.data} lang={lang} />)}
     </div>
   </main>
+
+  <Wizard aids={aids.map(a => a.data)} lang={lang} />
+
+  <script is:inline define:vars={{ lang }}>
+    // Category filter via ?cat=X. Lightweight: hide non-matching cards,
+    // update count + eyebrow, mark active nav. Pre-rendered HTML stays
+    // accessible if JS is off (just shows the full grid, no harm).
+    (function () {
+      const cat = new URLSearchParams(location.search).get('cat');
+      if (!cat) return;
+      const cards = document.querySelectorAll('.grid .card');
+      let shown = 0;
+      cards.forEach(c => {
+        if (c.dataset.cat === cat) shown++;
+        else c.style.display = 'none';
+      });
+      const cnt = document.getElementById('result-count-num');
+      if (cnt) cnt.textContent = String(shown).padStart(2, '0');
+      const clear = document.getElementById('clear-filter');
+      if (clear) clear.style.display = 'inline';
+      const labels = {
+        vivienda: { ca: 'HABITATGE', es: 'VIVIENDA' },
+        autonomos: { ca: 'AUTÒNOMS', es: 'AUTÓNOMOS' },
+        estudios: { ca: 'ESTUDIS', es: 'ESTUDIOS' },
+      };
+      const label = labels[cat] && labels[cat][lang];
+      if (label) {
+        const eyebrow = document.querySelector('.hero-eyebrow span:last-child');
+        if (eyebrow) eyebrow.textContent = eyebrow.textContent.replace(/HABITATGE|VIVIENDA/, label);
+      }
+      document.querySelectorAll('.topbar-nav a').forEach(a => {
+        if (a.href.includes('cat=' + cat)) a.style.fontWeight = '600';
+        else if (a.href.includes('cat=')) a.style.color = 'var(--ink-faint)';
+      });
+    })();
+  </script>
 </Base>

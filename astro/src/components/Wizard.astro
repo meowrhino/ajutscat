@@ -1,0 +1,290 @@
+---
+import type { CollectionEntry } from 'astro:content';
+type Aid = CollectionEntry<'aids'>['data'];
+
+interface Props {
+  aids: Aid[];
+  lang: 'ca' | 'es';
+}
+const { aids, lang } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+
+// Slim payload: the wizard only needs these fields client-side.
+const payload = aids.map(a => ({
+  id: a.id,
+  nombre: a[`nombre_${lang}` as 'nombre_ca' | 'nombre_es'],
+  cuantia: a[`cuantia_${lang}` as 'cuantia_ca' | 'cuantia_es'],
+  subcategoria: a.subcategoria,
+  edad_min: a.edad_min,
+  edad_max: a.edad_max,
+  ingresos_max: a.ingresos_max,
+  ambito: a.ambito,
+  fecha_apertura: a.fecha_apertura,
+  fecha_cierre: a.fecha_cierre,
+}));
+
+const t = lang === 'ca' ? {
+  eyebrow: 'A QUÈ TINC DRET?',
+  close: 'Tancar',
+  back: '← Enrere',
+  restart: '↻ Tornar a començar',
+  seeAll: 'Veure el llistat',
+  next: 'Següent →',
+  none: 'Amb aquests criteris no trobem cap ajuda. Els requisits són estrictes; comprova també les fitxes individuals.',
+  found: (n: number) => `Podries encaixar en ${n} ${n === 1 ? 'ajuda' : 'ajudes'}`,
+  disclaimer: "Comprova sempre els requisits complets a la fitxa. Això és una orientació, no una resolució.",
+  open: 'Oberta', proxima: 'Pròximament', closed: 'Tancada',
+  q: {
+    age:       { q: 'Quants anys tens?', placeholder: 'Ex: 28', unit: 'anys' },
+    situation: { q: "Quina és la teva situació?",
+                 opts: [
+                   { v: 'lloguer',      label: 'Visc de lloguer' },
+                   { v: 'compra',       label: 'Vull comprar el primer habitatge' },
+                   { v: 'rehabilitacio',label: "Vull rehabilitar el meu edifici/habitatge" },
+                   { v: 'urgencia',     label: "Estic en risc de pèrdua d'habitatge", hint: "Deutes de lloguer/hipoteca, desnonament" },
+                   { v: 'beca',         label: 'Estudio a la universitat' },
+                   { v: 'alta',         label: 'Em vull donar d\'alta com a autònom/a' },
+                 ] },
+    income:    { q: 'Ingressos anuals aproximats?',
+                 opts: [
+                   { v: 15000, label: 'Menys de 15.000 €' },
+                   { v: 25000, label: '15.000 – 25.000 €' },
+                   { v: 36000, label: '25.000 – 36.000 €' },
+                   { v: 60000, label: 'Més de 36.000 €' },
+                 ] },
+    zone:      { q: 'On vius?',
+                 opts: [
+                   { v: 'bcn',       label: 'Barcelona ciutat' },
+                   { v: 'catalunya', label: 'Resta de Catalunya' },
+                 ] },
+  },
+} : {
+  eyebrow: '¿A QUÉ TENGO DERECHO?',
+  close: 'Cerrar',
+  back: '← Atrás',
+  restart: '↻ Volver a empezar',
+  seeAll: 'Ver el listado',
+  next: 'Siguiente →',
+  none: 'Con estos criterios no encontramos ninguna ayuda. Los requisitos son estrictos; comprueba también las fichas individuales.',
+  found: (n: number) => `Podrías encajar en ${n} ${n === 1 ? 'ayuda' : 'ayudas'}`,
+  disclaimer: 'Comprueba siempre los requisitos completos en la ficha. Esto es una orientación, no una resolución.',
+  open: 'Abierta', proxima: 'Próximamente', closed: 'Cerrada',
+  q: {
+    age:       { q: '¿Cuántos años tienes?', placeholder: 'Ej: 28', unit: 'años' },
+    situation: { q: '¿Cuál es tu situación?',
+                 opts: [
+                   { v: 'lloguer',      label: 'Vivo de alquiler' },
+                   { v: 'compra',       label: 'Quiero comprar la primera vivienda' },
+                   { v: 'rehabilitacio',label: 'Quiero rehabilitar mi edificio/vivienda' },
+                   { v: 'urgencia',     label: 'Estoy en riesgo de pérdida de vivienda', hint: 'Deudas alquiler/hipoteca, desahucio' },
+                   { v: 'beca',         label: 'Estudio en la universidad' },
+                   { v: 'alta',         label: 'Me quiero dar de alta como autónomo/a' },
+                 ] },
+    income:    { q: '¿Ingresos anuales aproximados?',
+                 opts: [
+                   { v: 15000, label: 'Menos de 15.000 €' },
+                   { v: 25000, label: '15.000 – 25.000 €' },
+                   { v: 36000, label: '25.000 – 36.000 €' },
+                   { v: 60000, label: 'Más de 36.000 €' },
+                 ] },
+    zone:      { q: '¿Dónde vives?',
+                 opts: [
+                   { v: 'bcn',       label: 'Barcelona ciudad' },
+                   { v: 'catalunya', label: 'Resto de Catalunya' },
+                 ] },
+  },
+};
+
+// Step ordering — same for both languages.
+const STEP_IDS = ['age', 'situation', 'income', 'zone'];
+---
+<dialog id="wizard-dialog" class="wizard-backdrop" aria-label={t.eyebrow}>
+  <div class="wizard" role="dialog" aria-modal="true">
+    <div class="wizard-head">
+      <span class="wizard-eyebrow">{t.eyebrow}</span>
+      <button type="button" class="wizard-x" aria-label={t.close} data-wizard-close>×</button>
+    </div>
+
+    <div class="wizard-progress" data-wizard-progress>
+      {STEP_IDS.map((_, i) => <span class={`wizard-dot${i === 0 ? ' on' : ''}`} data-step-dot={i}></span>)}
+      <span class="mono" style="margin-left:auto;font-size:11px;color:var(--ink-muted)" data-step-counter>1/{STEP_IDS.length}</span>
+    </div>
+
+    <div class="wizard-body" data-wizard-body>
+      {/* Step content rendered by JS into this slot */}
+    </div>
+
+    <div class="wizard-foot" data-wizard-foot style="display:none">
+      <button type="button" class="wizard-back" data-wizard-back>{t.back}</button>
+    </div>
+  </div>
+</dialog>
+
+<script id="wizard-data" type="application/json" set:html={JSON.stringify(payload)}></script>
+
+<script is:inline define:vars={{ t, lang, base, stepIds: STEP_IDS }}>
+  (function () {
+    const dialog = document.getElementById('wizard-dialog');
+    if (!dialog) return;
+    const aids = JSON.parse(document.getElementById('wizard-data').textContent || '[]');
+    const today = new Date().toISOString().slice(0, 10);
+
+    function computeStatus(a) {
+      if (today < a.fecha_apertura) return 'proxima';
+      if (today > a.fecha_cierre) return 'cerrada';
+      return 'abierta';
+    }
+    function statusLabel(s) {
+      return s === 'abierta' ? t.open : s === 'proxima' ? t.proxima : t.closed;
+    }
+    function rank(s) { return s === 'abierta' ? 0 : s === 'proxima' ? 1 : 2; }
+
+    function matchAids(answers) {
+      return aids.filter(a => {
+        if (answers.age != null) {
+          if (answers.age < a.edad_min || answers.age > a.edad_max) return false;
+        }
+        if (answers.situation && a.subcategoria !== answers.situation) return false;
+        if (answers.income != null && a.ingresos_max && answers.income > a.ingresos_max) return false;
+        if (answers.zone === 'catalunya' && a.ambito === 'barcelona') return false;
+        return true;
+      }).sort((x, y) => {
+        const sx = computeStatus(x), sy = computeStatus(y);
+        if (rank(sx) !== rank(sy)) return rank(sx) - rank(sy);
+        return new Date(x.fecha_cierre) - new Date(y.fecha_cierre);
+      });
+    }
+
+    let stepIdx = 0;
+    let answers = {};
+    let done = false;
+
+    const body = dialog.querySelector('[data-wizard-body]');
+    const foot = dialog.querySelector('[data-wizard-foot]');
+    const counter = dialog.querySelector('[data-step-counter]');
+    const dots = dialog.querySelectorAll('[data-step-dot]');
+    const backBtn = dialog.querySelector('[data-wizard-back]');
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+    }
+
+    function render() {
+      // Update progress
+      dots.forEach((d, i) => d.classList.toggle('on', i <= stepIdx));
+      counter.textContent = (done ? stepIds.length : stepIdx + 1) + '/' + stepIds.length;
+
+      if (done) {
+        const matches = matchAids(answers);
+        const head = matches.length === 0 ? t.none : t.found(matches.length);
+        const sub = matches.length > 0 ? `<p class="wizard-sub">${escapeHtml(t.disclaimer)}</p>` : '';
+        const list = matches.length === 0 ? '' : '<div class="wizard-results">' + matches.map(a => {
+          const s = computeStatus(a);
+          const cls = s === 'abierta' ? 'ok' : s === 'proxima' ? 'warn' : 'danger';
+          return '<button type="button" class="wizard-result" data-aid-id="' + escapeHtml(a.id) + '">' +
+            '<span class="wizard-result-bar ' + cls + '"></span>' +
+            '<span style="flex:1;min-width:0">' +
+              '<span class="wizard-result-title">' + escapeHtml(a.nombre) + '</span>' +
+              '<span class="wizard-result-sub">' + escapeHtml(a.cuantia) + '</span>' +
+            '</span>' +
+            '<span class="card-status ' + cls + '" style="flex:0 0 auto"><span class="dot"></span>' + escapeHtml(statusLabel(s)) + '</span>' +
+          '</button>';
+        }).join('') + '</div>';
+        body.innerHTML = '<h2 class="wizard-q">' + escapeHtml(head) + '</h2>' + sub + list +
+          '<div class="wizard-foot" style="margin-top:20px">' +
+            '<button type="button" class="wizard-back" data-wizard-restart>' + escapeHtml(t.restart) + '</button>' +
+            '<button type="button" class="btn primary" data-wizard-close>' + escapeHtml(t.seeAll) + '</button>' +
+          '</div>';
+        foot.style.display = 'none';
+        body.querySelectorAll('[data-aid-id]').forEach(b => {
+          b.addEventListener('click', () => {
+            const id = b.dataset.aidId;
+            close();
+            location.href = base + lang + '/' + id + '/';
+          });
+        });
+        body.querySelector('[data-wizard-restart]').addEventListener('click', restart);
+        body.querySelectorAll('[data-wizard-close]').forEach(b => b.addEventListener('click', close));
+        return;
+      }
+
+      const stepId = stepIds[stepIdx];
+      const meta = t.q[stepId];
+      let html = '<h2 class="wizard-q">' + escapeHtml(meta.q) + '</h2>';
+      if (stepId === 'age') {
+        html += '<form data-num-form class="wizard-number-form">' +
+          '<input type="number" min="0" max="120" placeholder="' + escapeHtml(meta.placeholder) + '" class="wizard-input mono" autofocus />' +
+          '<span class="wizard-input-unit mono">' + escapeHtml(meta.unit) + '</span>' +
+          '<button type="submit" class="btn primary">' + escapeHtml(t.next) + '</button>' +
+        '</form>';
+      } else {
+        html += '<div class="wizard-options">' + meta.opts.map(o =>
+          '<button type="button" class="wizard-option" data-val="' + escapeHtml(o.v) + '">' +
+            '<span class="wizard-option-label">' + escapeHtml(o.label) + '</span>' +
+            (o.hint ? '<span class="wizard-option-hint">' + escapeHtml(o.hint) + '</span>' : '') +
+          '</button>'
+        ).join('') + '</div>';
+      }
+      body.innerHTML = html;
+      foot.style.display = stepIdx > 0 ? 'flex' : 'none';
+
+      const form = body.querySelector('[data-num-form]');
+      if (form) {
+        const input = form.querySelector('input');
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const n = Number(input.value);
+          if (!isNaN(n) && n > 0) advance(n);
+        });
+      }
+      body.querySelectorAll('.wizard-option').forEach(b => {
+        b.addEventListener('click', () => {
+          const v = b.dataset.val;
+          // coerce numbers back from string
+          const num = Number(v);
+          advance(!isNaN(num) && String(num) === v ? num : v);
+        });
+      });
+    }
+
+    function advance(val) {
+      answers[stepIds[stepIdx]] = val;
+      if (stepIdx + 1 < stepIds.length) stepIdx++;
+      else done = true;
+      render();
+    }
+
+    function back() {
+      if (stepIdx > 0) { stepIdx--; done = false; render(); }
+    }
+
+    function restart() {
+      stepIdx = 0; answers = {}; done = false; render();
+    }
+
+    function open() {
+      restart();
+      if (typeof dialog.showModal === 'function') dialog.showModal();
+      else dialog.setAttribute('open', '');
+    }
+
+    function close() {
+      if (typeof dialog.close === 'function') dialog.close();
+      else dialog.removeAttribute('open');
+    }
+
+    backBtn.addEventListener('click', back);
+    dialog.querySelectorAll('[data-wizard-close]').forEach(b => b.addEventListener('click', close));
+    // Click on backdrop closes
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) close();
+    });
+
+    // Hook up the hero CTA + any other [data-open-wizard] triggers.
+    document.querySelectorAll('[data-open-wizard], a[href="#wizard"]').forEach(el => {
+      el.addEventListener('click', (e) => { e.preventDefault(); open(); });
+    });
+
+    render();
+  })();
+</script>

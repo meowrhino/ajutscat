@@ -43,7 +43,7 @@ const countdownText = status === 'abierta'
     ? `${t.opens} ${fmtShort(aid.fecha_apertura)}`
     : `${t.closed} ${fmtShort(aid.fecha_cierre)}`;
 ---
-<a class="card" href={href} aria-label={aid[`nombre_${lang}`]}>
+<a class="card" href={href} aria-label={aid[`nombre_${lang}`]} data-cat={aid.categoria}>
   <div class={`card-bar ${bar}`}></div>
   <div class="card-body">
     <div class="card-top">

@@ -16,9 +16,9 @@ const altPath = Astro.url.pathname.replace(`/${lang}/`, `/${otherLang}/`);
       <span style="font-family:var(--mono);font-size:11px;color:var(--ink-muted);font-weight:400;margin-left:4px">v0.1</span>
     </a>
     <nav class="topbar-nav keep">
-      <a href={`${base}${lang}/`}>{t.nav1}</a>
-      <a href="#" style="color:var(--ink-faint)">{t.nav2}</a>
-      <a href="#" style="color:var(--ink-faint)">{t.nav3}</a>
+      <a href={`${base}${lang}/?cat=vivienda`}>{t.nav1}</a>
+      <a href={`${base}${lang}/?cat=autonomos`}>{t.nav2}</a>
+      <a href={`${base}${lang}/?cat=estudios`}>{t.nav3}</a>
       <div class="lang" role="group" aria-label="Language">
         <a href={`${base}ca/`} class={lang === 'ca' ? 'active' : ''}
            style="text-decoration:none;display:inline-block;padding:3px 10px;border-radius:999px"
