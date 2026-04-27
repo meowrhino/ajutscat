@@ -132,17 +132,31 @@ async function bdnsFetch(bdnsId) {
   };
 }
 
-async function bdnsSearch(page = 0, pageSize = 50) {
+async function bdnsSearch(page = 0, pageSize = 50, descripcion = null) {
   // Paginated search ordered by reception date desc (most recent first).
-  // Ordering by numeroConvocatoria is lexicographic and surfaces old 2011/2015
-  // items at the top — not what we want for "fresh convocatorias".
-  // Response: { content: [...], totalElements, pageable, ... }.
-  const url = `${BDNS}/convocatorias/busqueda?page=${page}&pageSize=${pageSize}&order=fechaRecepcion&direccion=desc&vpd=GE`;
-  const res = await fetch(url, { headers: { Accept: 'application/json' } });
+  // Pass `descripcion` for server-side text filtering (the API honors this);
+  // without it we get the global feed where Catalunya items are sparse.
+  const params = new URLSearchParams({
+    page, pageSize,
+    order: 'fechaRecepcion', direccion: 'desc', vpd: 'GE',
+  });
+  if (descripcion) params.set('descripcion', descripcion);
+  const res = await fetch(`${BDNS}/convocatorias/busqueda?${params}`, { headers: { Accept: 'application/json' } });
   if (!res.ok) throw new Error(`BDNS search: HTTP ${res.status}`);
   const raw = await res.json();
   return raw?.content || [];
 }
+
+// Topic queries — server-side filter by descripcion. Each query returns
+// ~30 hits; the union (after Catalan-organ + dedupe filtering) is what
+// goes to issues. Verified empirically: this surfaces ~20 real Catalan
+// candidates vs. the 0 we got from scanning 150 of the global feed.
+const DISCOVER_QUERIES = [
+  'lloguer', 'alquiler', 'habitatge', 'vivienda',
+  'rehabilitació', 'rehabilitacion',
+  'beca', 'jove', 'joven',
+  'autònom', 'autonomo', 'emprendimiento',
+];
 
 // ——— Core helpers ———
 
@@ -243,22 +257,27 @@ async function stepDiscover() {
     if (m) known.add(m[1].trim().replace(/^['"]|['"]$/g, ''));
   }
 
-  let hits = [];
-  try {
-    // Scan first ~150 results = fresh convocatorias.
-    for (const page of [0, 1, 2]) {
-      const chunk = await bdnsSearch(page, 50);
-      hits.push(...chunk);
+  // Run topic queries serially (BDNS rate-limits at ~10 req/s and 429s
+  // any burst). Merge into a single map keyed by numeroConvocatoria.
+  const seen = new Map();
+  for (const q of DISCOVER_QUERIES) {
+    let chunk;
+    try {
+      chunk = await bdnsSearch(0, 30, q);
+    } catch (e) {
+      console.warn(`discovery query "${q}" failed:`, e.message);
+      continue;
     }
-  } catch (e) {
-    console.warn('discovery failed:', e.message);
-    return;
+    for (const c of chunk) {
+      const id = String(c.numeroConvocatoria || '');
+      if (!id || seen.has(id) || known.has(id)) continue;
+      // Skip very old items (>2 years) — they're typically conventions/extensions.
+      if (c.fechaRecepcion && c.fechaRecepcion < '2024-01-01') continue;
+      if (!isRelevant(c)) continue;
+      seen.set(id, c);
+    }
   }
-
-  const relevant = hits.filter(isRelevant).filter(c => {
-    const id = String(c.numeroConvocatoria || '');
-    return id && !known.has(id);
-  });
+  const relevant = [...seen.values()];
 
   if (!relevant.length) {
     console.log('step 4 (discovery): no new relevant convocatorias');
