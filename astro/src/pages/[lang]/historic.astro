@@ -25,7 +25,7 @@ const t = {
 }[lang];
 ---
 <Base title={t.title} lang={lang}>
-  <main class="main">
+  <main class="main" data-pagefind-body>
     <a class="back-link" href={`${base}${lang}/`}>← {lang === 'ca' ? 'Tornar' : 'Volver'}</a>
     <h1 style="margin:var(--s-6) 0 var(--s-2)">{t.title}</h1>
     <p style="color:var(--ink-muted);max-width:60ch;margin-bottom:var(--s-8)">{t.intro}</p>

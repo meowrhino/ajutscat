@@ -65,7 +65,7 @@ const t = {
       <div class="hero-stat"><span class="hero-stat-num">{stats.closing}</span><span class="hero-stat-label">{t.closing}</span></div>
     </div>
   </section>
-  <main class="main">
+  <main class="main" data-pagefind-body>
     <div id="search" style="margin: var(--s-4) 0 var(--s-8); --pagefind-ui-primary: var(--ink); --pagefind-ui-font: var(--sans); --pagefind-ui-border: var(--line); --pagefind-ui-border-radius: 6px;"></div>
     <div class="result-count">
       <span class="mono">{String(aids.length).padStart(2, '0')}</span> / {String(all.length).padStart(2, '0')} {t.results}
