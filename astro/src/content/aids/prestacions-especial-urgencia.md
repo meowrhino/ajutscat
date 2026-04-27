@@ -1,7 +1,7 @@
 ---
 id: prestacions-especial-urgencia
-nombre_ca: "Prestacions d'especial urgència"
-nombre_es: Prestaciones de especial urgencia
+nombre_ca: Urgència habitatge
+nombre_es: Urgencia vivienda
 subtitle_ca: "Per a situacions de pèrdua d'habitatge o deutes"
 subtitle_es: Para situaciones de pérdida de vivienda o deudas
 categoria: vivienda
@@ -41,18 +41,10 @@ documentacion_es:
   - DNI / NIE
   - Contrato o sentencia
   - Justificante de ingresos
-historico:
-  - ano: 2025
-    apertura: 2025-01-01
-    cierre: 2025-12-31
-    dias: 365
-  - ano: 2024
-    apertura: 2024-01-01
-    cierre: 2024-12-31
-    dias: 366
+historico: []
 ---
 
-# Prestacions d'especial urgència
+# Urgència habitatge
 
 Per a situacions de pèrdua d'habitatge o deutes. Pagament únic per cobrir lloguers endarrerits, hipoteques o canvi d'habitatge en situació d'urgència. Es tramita via serveis socials.
 

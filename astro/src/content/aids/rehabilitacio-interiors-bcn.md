@@ -1,7 +1,7 @@
 ---
 id: rehabilitacio-interiors-bcn
-nombre_ca: "Rehabilitació interiors · Borsa BCN"
-nombre_es: "Rehabilitación interiores · Bolsa BCN"
+nombre_ca: Rehabilitar interior · Borsa BCN
+nombre_es: Rehabilitar interior · Bolsa BCN
 subtitle_ca: "Ajut a la rehabilitació d'interiors per incorporar habitatges a la Borsa de Lloguer de Barcelona"
 subtitle_es: "Ayuda a la rehabilitación de interiores para incorporar viviendas a la Bolsa de Alquiler de Barcelona"
 categoria: vivienda
@@ -52,7 +52,7 @@ historico: []
 fetcher_last_ok: 2026-04-27T09:56:20.202Z
 ---
 
-# Rehabilitació interiors · Borsa BCN
+# Rehabilitar interior · Borsa BCN
 
 Ajut plurianual a la rehabilitació d'interiors d'habitatges que s'incorporaran a la Borsa de Lloguer de Barcelona o a programes de cessió del mercat privat.
 

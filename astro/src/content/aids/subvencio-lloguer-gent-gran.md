@@ -1,7 +1,7 @@
 ---
 id: subvencio-lloguer-gent-gran
-nombre_ca: Subvenció lloguer · gent gran
-nombre_es: Subvención alquiler · mayores
+nombre_ca: Lloguer · 65+
+nombre_es: Alquiler · 65+
 subtitle_ca: Per a persones de 65 anys o més
 subtitle_es: Para personas de 65 años o más
 categoria: vivienda
@@ -42,18 +42,10 @@ documentacion_es:
   - Contrato de alquiler
   - Pensión / renta
   - Empadronamiento
-historico:
-  - ano: 2025
-    apertura: 2025-04-08
-    cierre: 2025-05-05
-    dias: 28
-  - ano: 2024
-    apertura: 2024-04-12
-    cierre: 2024-05-10
-    dias: 29
+historico: []
 ---
 
-# Subvenció lloguer · gent gran
+# Lloguer · 65+
 
 Per a persones de 65 anys o més. Subvenció amb percentatge superior (fins al 60%) que la línia general 36-64.
 

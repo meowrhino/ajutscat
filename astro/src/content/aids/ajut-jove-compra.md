@@ -1,7 +1,7 @@
 ---
 id: ajut-jove-compra
-nombre_ca: Ajut Jove · compra habitatge
-nombre_es: Ayuda Joven · compra vivienda
+nombre_ca: Compra habitatge · joves
+nombre_es: Compra vivienda · jóvenes
 subtitle_ca: Per a la compra del primer habitatge habitual
 subtitle_es: Para la compra de la primera vivienda habitual
 categoria: vivienda
@@ -45,18 +45,10 @@ documentacion_es:
   - Escritura o contrato de arras
   - Empadronamiento
   - Declaración de renta
-historico:
-  - ano: 2025
-    apertura: 2025-01-20
-    cierre: 2025-03-05
-    dias: 44
-  - ano: 2024
-    apertura: 2024-02-01
-    cierre: 2024-03-30
-    dias: 58
+historico: []
 ---
 
-# Ajut Jove · compra habitatge
+# Compra habitatge · joves
 
 Per a la compra del primer habitatge habitual. Préstecs gestionats per l'Institut Català de Finances (ICF) en col·laboració amb l'Agència de l'Habitatge de Catalunya.
 

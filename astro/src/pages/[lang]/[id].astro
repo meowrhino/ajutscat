@@ -125,28 +125,30 @@ const maxDias = Math.max(...hist.map(h => h.dias), 1);
       </ul>
     </section>
 
-    <section class="section">
-      <h2 class="section-title">{t.hist}</h2>
-      <div class="history-table">
-        <div class="history-row header">
-          <span>{t.year}</span><span>{t.open}</span><span>{t.close}</span><span>{t.days}</span>
-          <span>{lang === 'ca' ? 'Durada visual' : 'Duración visual'}</span>
+    {hist.length > 0 && (
+      <section class="section">
+        <h2 class="section-title">{t.hist}</h2>
+        <div class="history-table">
+          <div class="history-row header">
+            <span>{t.year}</span><span>{t.open}</span><span>{t.close}</span><span>{t.days}</span>
+            <span>{lang === 'ca' ? 'Durada visual' : 'Duración visual'}</span>
+          </div>
+          {hist.map(r => {
+            const cls = r.dias > 30 ? 'long' : r.dias > 7 ? 'medium' : 'short';
+            return (
+              <div class={`history-row${r.ano === new Date().getFullYear() ? ' this-year' : ''}`}>
+                <span class="mono">{r.ano}</span>
+                <span class="mono">{fmtShort(r.apertura)}</span>
+                <span class="mono">{fmtShort(r.cierre)}</span>
+                <span class="mono">{r.dias}d</span>
+                <span><span class={`history-bar ${cls}`} style={`width:${Math.max(4, (r.dias / maxDias) * 100)}%`}></span></span>
+              </div>
+            );
+          })}
         </div>
-        {hist.map(r => {
-          const cls = r.dias > 30 ? 'long' : r.dias > 7 ? 'medium' : 'short';
-          return (
-            <div class={`history-row${r.ano === new Date().getFullYear() ? ' this-year' : ''}`}>
-              <span class="mono">{r.ano}</span>
-              <span class="mono">{fmtShort(r.apertura)}</span>
-              <span class="mono">{fmtShort(r.cierre)}</span>
-              <span class="mono">{r.dias}d</span>
-              <span><span class={`history-bar ${cls}`} style={`width:${Math.max(4, (r.dias / maxDias) * 100)}%`}></span></span>
-            </div>
-          );
-        })}
-      </div>
-      <p style="font-size:13px;color:var(--ink-muted);margin-top:12px">{t.noteHist}</p>
-    </section>
+        <p style="font-size:13px;color:var(--ink-muted);margin-top:12px">{t.noteHist}</p>
+      </section>
+    )}
   </div>
 </Base>
 

@@ -1,7 +1,7 @@
 ---
 id: subvencio-lloguer-general
-nombre_ca: Subvenció lloguer · general
-nombre_es: Subvención alquiler · general
+nombre_ca: Lloguer · 36-64
+nombre_es: Alquiler · 36-64
 subtitle_ca: Per a persones de 36 a 64 anys
 subtitle_es: Para personas de 36 a 64 años
 categoria: vivienda
@@ -42,18 +42,10 @@ documentacion_es:
   - Contrato de alquiler
   - Recibos
   - Empadronamiento
-historico:
-  - ano: 2025
-    apertura: 2025-05-02
-    cierre: 2025-06-18
-    dias: 48
-  - ano: 2024
-    apertura: 2024-05-08
-    cierre: 2024-06-30
-    dias: 54
+historico: []
 ---
 
-# Subvenció lloguer · general
+# Lloguer · 36-64
 
 Per a persones de 36 a 64 anys. Convocatòria anual de l'Agència de l'Habitatge per al pagament del lloguer d'habitatge habitual.
 

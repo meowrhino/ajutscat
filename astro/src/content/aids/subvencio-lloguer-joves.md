@@ -1,7 +1,7 @@
 ---
 id: subvencio-lloguer-joves
-nombre_ca: Subvenció lloguer · joves
-nombre_es: Subvención alquiler · jóvenes
+nombre_ca: Lloguer · joves <36
+nombre_es: Alquiler · jóvenes <36
 subtitle_ca: "Franja d'edat menors de 36 anys"
 subtitle_es: Franja de edad menores de 36 años
 categoria: vivienda
@@ -43,22 +43,11 @@ documentacion_es:
   - Recibos de los últimos meses
   - Empadronamiento
   - Declaración de renta
-historico:
-  - ano: 2025
-    apertura: 2025-04-10
-    cierre: 2025-05-02
-    dias: 23
-  - ano: 2024
-    apertura: 2024-04-15
-    cierre: 2024-05-15
-    dias: 31
-  - ano: 2023
-    apertura: 2023-03-01
-    cierre: 2023-04-15
-    dias: 46
+historico: []
+draft: true
 ---
 
-# Subvenció lloguer · joves
+# Lloguer · joves <36
 
 Franja d'edat menors de 36 anys. **La convocatòria 2026 encara no s'ha publicat al DOGC** — el portal del trámit indica «PENDENT DE CONVOCATÒRIA». Les dates són una estimació basada en el patró dels últims anys (abril-juny). Quan s'obri, el fetcher actualitzarà aquest fitxer si afegim el `bdns_id` corresponent.
 

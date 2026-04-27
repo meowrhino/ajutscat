@@ -1,7 +1,7 @@
 ---
 id: prestacio-lloguer-colectius-vulnerables-bcn
-nombre_ca: "Prestació lloguer · col·lectius vulnerables (BCN)"
-nombre_es: "Prestación alquiler · colectivos vulnerables (BCN)"
+nombre_ca: Lloguer · vulnerabilitat (BCN)
+nombre_es: Alquiler · vulnerabilidad (BCN)
 subtitle_ca: "Ajut al pagament del lloguer per a persones en risc d'exclusió a Barcelona ciutat"
 subtitle_es: "Ayuda al pago del alquiler para personas en riesgo de exclusión en Barcelona ciudad"
 categoria: vivienda
@@ -51,7 +51,7 @@ documentacion_es:
 historico: []
 ---
 
-# Prestació lloguer · col·lectius vulnerables (BCN)
+# Lloguer · vulnerabilitat (BCN)
 
 Ajut al pagament del lloguer per a persones en risc d'exclusió a Barcelona ciutat. Gestionat pel Consorci de l'Habitatge de Barcelona via derivació de serveis socials.
 

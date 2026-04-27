@@ -1,7 +1,7 @@
 ---
 id: tarifa-plana-autonoms
-nombre_ca: Tarifa plana per a autònoms
-nombre_es: Tarifa plana para autónomos
+nombre_ca: Tarifa plana · autònoms
+nombre_es: Tarifa plana · autónomos
 subtitle_ca: Quota reduïda a 80 €/mes durant el primer any d'alta
 subtitle_es: Cuota reducida a 80 €/mes durante el primer año de alta
 categoria: autonomos
@@ -48,17 +48,9 @@ documentacion_es:
   - Alta en el RETA de la Seguridad Social
   - Certificado de estar al corriente con Hacienda
   - Certificado de estar al corriente con Seguridad Social
-historico:
-  - ano: 2025
-    apertura: 2025-01-01
-    cierre: 2025-12-31
-    dias: 365
-  - ano: 2024
-    apertura: 2024-01-01
-    cierre: 2024-12-31
-    dias: 365
+historico: []
 ---
 
-# Tarifa plana per a autònoms
+# Tarifa plana · autònoms
 
 Quota reduïda a 80 €/mes durant el primer any d'alta al RETA.

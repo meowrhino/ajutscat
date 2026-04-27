@@ -1,7 +1,7 @@
 ---
 id: mesures-antidesnonament
-nombre_ca: Ofideute · mediació anti-desnonament
-nombre_es: Ofideute · mediación anti-desahucio
+nombre_ca: Ofideute · anti-desnonament
+nombre_es: Ofideute · anti-desahucio
 subtitle_ca: "Servei gratuït de mediació hipotecària i de lloguer per evitar la pèrdua de l'habitatge"
 subtitle_es: Servicio gratuito de mediación hipotecaria y de alquiler para evitar la pérdida de la vivienda
 categoria: vivienda
@@ -45,7 +45,7 @@ documentacion_es:
 historico: []
 ---
 
-# Ofideute · mediació anti-desnonament
+# Ofideute · anti-desnonament
 
 Servei permanent de l'Agència de l'Habitatge per fer de mediadora entre l'arrendatari/deutor i el banc o propietari, abans que el procés judicial avanci. **No és un ajut econòmic** — l'ajuda monetària per pagar el lloguer endarrerit és un programa diferent ("Prestacions d'especial urgència").
 

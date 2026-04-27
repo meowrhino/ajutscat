@@ -50,23 +50,7 @@ documentacion_es:
   - Certificado de empadronamiento
   - Declaración de la renta (o certificado de imputaciones)
   - Certificado bancario de titularidad de la cuenta
-historico:
-  - ano: 2025
-    apertura: 2025-03-10
-    cierre: 2025-03-14
-    dias: 5
-  - ano: 2024
-    apertura: 2024-04-02
-    cierre: 2024-04-12
-    dias: 11
-  - ano: 2023
-    apertura: 2023-05-08
-    cierre: 2023-06-09
-    dias: 33
-  - ano: 2026
-    apertura: 2026-03-09
-    cierre: 2026-03-13
-    dias: 5
+historico: []
 fetcher_last_ok: 2026-04-27T09:56:19.951Z
 ---
 

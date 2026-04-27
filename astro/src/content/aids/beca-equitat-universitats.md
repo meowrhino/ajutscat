@@ -1,7 +1,7 @@
 ---
 id: beca-equitat-universitats
-nombre_ca: Beca Equitat
-nombre_es: Beca Equitat
+nombre_ca: Beca Equitat · universitat
+nombre_es: Beca Equidad · universidad
 subtitle_ca: Reducció del preu de matrícula universitària segons renda familiar
 subtitle_es: Reducción del precio de matrícula universitaria según renta familiar
 categoria: estudios
@@ -46,21 +46,9 @@ documentacion_es:
   - Resguardo de matrícula
   - Declaración de la renta familiar
   - Libro de familia (para acreditar unidad familiar)
-historico:
-  - ano: 2025
-    apertura: 2025-09-15
-    cierre: 2025-10-31
-    dias: 46
-  - ano: 2024
-    apertura: 2024-09-16
-    cierre: 2024-10-31
-    dias: 45
-  - ano: 2023
-    apertura: 2023-09-15
-    cierre: 2023-10-30
-    dias: 45
+historico: []
 ---
 
-# Beca Equitat
+# Beca Equitat · universitat
 
 Reducció del preu de matrícula universitària segons renda familiar.

@@ -1,7 +1,7 @@
 ---
 id: consorci-habitatge-bcn-rehabilitacio
-nombre_ca: Rehabilitació · Consorci BCN
-nombre_es: Rehabilitación · Consorcio BCN
+nombre_ca: Rehabilitar edifici · BCN
+nombre_es: Rehabilitar edificio · BCN
 subtitle_ca: Per a obres de rehabilitació en edificis de Barcelona
 subtitle_es: Para obras de rehabilitación en edificios de Barcelona
 categoria: vivienda
@@ -42,18 +42,10 @@ documentacion_es:
   - Informe técnico (IITE)
   - Proyecto de obras
   - Presupuesto
-historico:
-  - ano: 2025
-    apertura: 2025-02-10
-    cierre: 2025-04-30
-    dias: 80
-  - ano: 2024
-    apertura: 2024-02-20
-    cierre: 2024-05-15
-    dias: 86
+historico: []
 ---
 
-# Rehabilitació · Consorci BCN
+# Rehabilitar edifici · BCN
 
 Per a obres de rehabilitació en edificis de Barcelona ciutat. Programa paraigua que cobreix conservació, eficiència energètica i ERRP-NextGen — sense codi BDNS únic perquè agrupa diversos sub-programes.
 
