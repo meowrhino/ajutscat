@@ -18,7 +18,7 @@ estado: cerrada
 fecha_apertura: 2026-03-09
 fecha_cierre: 2026-03-13
 duracion_ventana_dias: 5
-fuente_oficial: https://tramits.gencat.cat/ca/tramits/tramits-temes/Subvencio-Bo-Lloguer-Jove
+fuente_oficial: https://tramits.gencat.cat/ca/tramits/tramits-temes/22866_Bo_lloguer_joves
 bdns_id: "890390"
 organismo_ca: "Agència de l'Habitatge de Catalunya"
 organismo_es: Agencia de la Vivienda de Cataluña
@@ -72,6 +72,6 @@ fetcher_last_ok: 2026-04-27T09:56:19.951Z
 
 # Bo Lloguer Jove
 
-Ajut mensual per a joves de 18 a 35 anys que viuen de lloguer
+Ajut mensual per a joves de 18 a 35 anys que viuen de lloguer. Convocatòria estatal cofinançada amb el Ministerio de Vivienda i gestionada per l'Agència de l'Habitatge de Catalunya. Patró: ventana curta (≈5-10 dies) cada primavera, sense preavís.
 
-Font oficial: https://tramits.gencat.cat/
+Font oficial: https://tramits.gencat.cat/ca/tramits/tramits-temes/22866_Bo_lloguer_joves

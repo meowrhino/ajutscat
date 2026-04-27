@@ -20,7 +20,7 @@ estado: cerrada
 fecha_apertura: 2026-02-17
 fecha_cierre: 2026-03-17
 duracion_ventana_dias: 29
-fuente_oficial: https://habitatge.barcelona/
+fuente_oficial: https://www.habitatge.barcelona/ca/serveis-ajuts/lloguer/subvencions-al-pagament-del-lloguer-dhabitatges-del-mercat-privat-persones-en
 organismo_ca: "Consorci de l'Habitatge de Barcelona"
 organismo_es: Consorcio de la Vivienda de Barcelona
 ultima_actualizacion: 2026-04-27
@@ -55,4 +55,4 @@ historico: []
 
 Ajut al pagament del lloguer per a persones en risc d'exclusió a Barcelona ciutat. Gestionat pel Consorci de l'Habitatge de Barcelona via derivació de serveis socials.
 
-Font oficial: https://habitatge.barcelona/
+Font oficial: https://www.habitatge.barcelona/ca/serveis-ajuts/lloguer/subvencions-al-pagament-del-lloguer-dhabitatges-del-mercat-privat-persones-en

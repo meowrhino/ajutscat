@@ -14,11 +14,11 @@ edad_max: 35
 ingresos_max: 25200
 ambito: catalunya
 zonas_especificas: []
-estado: abierta
-fecha_apertura: 2026-04-14
-fecha_cierre: 2026-04-30
-duracion_ventana_dias: 17
-fuente_oficial: https://habitatge.gencat.cat/
+estado: proxima
+fecha_apertura: 2026-06-15
+fecha_cierre: 2026-07-15
+duracion_ventana_dias: 31
+fuente_oficial: https://tramits.gencat.cat/ca/tramits/tramits-temes/20246_Subvencions-per-al-pagament-del-lloguer
 organismo_ca: "Agència de l'Habitatge de Catalunya"
 organismo_es: Agencia de la Vivienda de Cataluña
 ultima_actualizacion: 2026-04-27
@@ -56,14 +56,10 @@ historico:
     apertura: 2023-03-01
     cierre: 2023-04-15
     dias: 46
-  - ano: 2026
-    apertura: 2026-04-14
-    cierre: 2026-04-30
-    dias: 17
 ---
 
 # Subvenció lloguer · joves
 
-Franja d'edat menors de 36 anys
+Franja d'edat menors de 36 anys. **La convocatòria 2026 encara no s'ha publicat al DOGC** — el portal del trámit indica «PENDENT DE CONVOCATÒRIA». Les dates són una estimació basada en el patró dels últims anys (abril-juny). Quan s'obri, el fetcher actualitzarà aquest fitxer si afegim el `bdns_id` corresponent.
 
-Font oficial: https://habitatge.gencat.cat/
+Font oficial: https://tramits.gencat.cat/ca/tramits/tramits-temes/20246_Subvencions-per-al-pagament-del-lloguer

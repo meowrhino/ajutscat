@@ -19,7 +19,7 @@ estado: cerrada
 fecha_apertura: 2026-02-15
 fecha_cierre: 2026-04-23
 duracion_ventana_dias: 68
-fuente_oficial: https://habitatge.barcelona/
+fuente_oficial: https://www.habitatge.barcelona/ca/serveis-ajuts/rehabilitacio/ajuts-la-rehabilitacio-de-ledifici
 organismo_ca: "Consorci de l'Habitatge de Barcelona"
 organismo_es: Consorcio de la Vivienda de Barcelona
 ultima_actualizacion: 2026-04-27
@@ -55,6 +55,6 @@ historico:
 
 # Rehabilitació · Consorci BCN
 
-Per a obres de rehabilitació en edificis de Barcelona
+Per a obres de rehabilitació en edificis de Barcelona ciutat. Programa paraigua que cobreix conservació, eficiència energètica i ERRP-NextGen — sense codi BDNS únic perquè agrupa diversos sub-programes.
 
-Font oficial: https://habitatge.barcelona/
+Font oficial: https://www.habitatge.barcelona/ca/serveis-ajuts/rehabilitacio/ajuts-la-rehabilitacio-de-ledifici

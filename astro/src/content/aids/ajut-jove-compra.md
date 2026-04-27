@@ -19,7 +19,8 @@ estado: cerrada
 fecha_apertura: 2026-01-15
 fecha_cierre: 2026-02-28
 duracion_ventana_dias: 45
-fuente_oficial: https://habitatge.gencat.cat/
+bdns_id: "841440"
+fuente_oficial: https://www.icf.cat/ca/prestecs/habitatge/icf-habitatge-emancipacio
 organismo_ca: "Agència de l'Habitatge de Catalunya"
 organismo_es: Agencia de la Vivienda de Cataluña
 ultima_actualizacion: 2026-04-27
@@ -57,6 +58,6 @@ historico:
 
 # Ajut Jove · compra habitatge
 
-Per a la compra del primer habitatge habitual
+Per a la compra del primer habitatge habitual. Préstecs gestionats per l'Institut Català de Finances (ICF) en col·laboració amb l'Agència de l'Habitatge de Catalunya.
 
-Font oficial: https://habitatge.gencat.cat/
+Font oficial: https://www.icf.cat/ca/prestecs/habitatge/icf-habitatge-emancipacio

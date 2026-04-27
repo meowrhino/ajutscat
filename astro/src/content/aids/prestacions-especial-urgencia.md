@@ -18,7 +18,7 @@ estado: abierta
 fecha_apertura: 2026-01-01
 fecha_cierre: 2026-12-31
 duracion_ventana_dias: 365
-fuente_oficial: https://habitatge.gencat.cat/
+fuente_oficial: https://tramits.gencat.cat/ca/tramits/tramits-temes/Prestacions-economiques-despecial-urgencia-per-a-lhabitatge
 organismo_ca: "Agència de l'Habitatge de Catalunya"
 organismo_es: Agencia de la Vivienda de Cataluña
 ultima_actualizacion: 2026-04-27
@@ -54,6 +54,8 @@ historico:
 
 # Prestacions d'especial urgència
 
-Per a situacions de pèrdua d'habitatge o deutes
+Per a situacions de pèrdua d'habitatge o deutes. Pagament únic per cobrir lloguers endarrerits, hipoteques o canvi d'habitatge en situació d'urgència. Es tramita via serveis socials.
 
-Font oficial: https://habitatge.gencat.cat/
+Procediment **permanent**: la Resolució TER/2024 que regula les bases està vigent indefinidament — per això no es lliga a cap `bdns_id` (BDNS només té entrades discretes per publicacions de bases, ≈cada 2-3 anys: 465939/2019, 545712/2021, 739780/2024).
+
+Font oficial: https://tramits.gencat.cat/ca/tramits/tramits-temes/Prestacions-economiques-despecial-urgencia-per-a-lhabitatge

@@ -20,7 +20,7 @@ estado: abierta
 fecha_apertura: 2026-01-07
 fecha_cierre: 2026-11-30
 duracion_ventana_dias: 328
-fuente_oficial: https://habitatge.barcelona/
+fuente_oficial: https://www.habitatge.barcelona/ca/ajuts-rehabilitacio-interior-habitatges-borsa-lloguer
 organismo_ca: "Consorci de l'Habitatge de Barcelona"
 organismo_es: Consorcio de la Vivienda de Barcelona
 ultima_actualizacion: 2026-04-27
@@ -56,4 +56,4 @@ fetcher_last_ok: 2026-04-27T09:56:20.202Z
 
 Ajut plurianual a la rehabilitació d'interiors d'habitatges que s'incorporaran a la Borsa de Lloguer de Barcelona o a programes de cessió del mercat privat.
 
-Font oficial: https://habitatge.barcelona/
+Font oficial: https://www.habitatge.barcelona/ca/ajuts-rehabilitacio-interior-habitatges-borsa-lloguer

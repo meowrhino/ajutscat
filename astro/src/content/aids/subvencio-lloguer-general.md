@@ -18,7 +18,8 @@ estado: proxima
 fecha_apertura: 2026-05-05
 fecha_cierre: 2026-06-15
 duracion_ventana_dias: 41
-fuente_oficial: https://habitatge.gencat.cat/
+bdns_id: "896205"
+fuente_oficial: https://tramits.gencat.cat/ca/tramits/tramits-temes/20246_Subvencions-per-al-pagament-del-lloguer?moda=2
 organismo_ca: "Agència de l'Habitatge de Catalunya"
 organismo_es: Agencia de la Vivienda de Cataluña
 ultima_actualizacion: 2026-04-27
@@ -54,6 +55,6 @@ historico:
 
 # Subvenció lloguer · general
 
-Per a persones de 36 a 64 anys
+Per a persones de 36 a 64 anys. Convocatòria anual de l'Agència de l'Habitatge per al pagament del lloguer d'habitatge habitual.
 
-Font oficial: https://habitatge.gencat.cat/
+Font oficial: https://tramits.gencat.cat/ca/tramits/tramits-temes/20246_Subvencions-per-al-pagament-del-lloguer?moda=2

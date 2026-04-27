@@ -196,7 +196,10 @@ async function stepUpdate() {
     const { fm, rawYaml, body } = parseFrontmatter(src);
     if (ONE_ID && fm.id !== ONE_ID) continue;
 
-    const patch = { ultima_actualizacion: TODAY };
+    // ultima_actualizacion only bumps when we actually verify against BDNS.
+    // For aids without bdns_id (manual entries) we leave it as the human set it
+    // — bumping it daily would lie about freshness ("nunca mentir sobre el estado").
+    const patch = {};
     let ok = false;
 
     if (fm.bdns_id) {
@@ -207,6 +210,7 @@ async function stepUpdate() {
         patch.duracion_ventana_dias = daysBetween(data.fecha_apertura, data.fecha_cierre);
         patch.estado = computeStatus(data.fecha_apertura, data.fecha_cierre);
         patch.fetcher_last_ok = new Date().toISOString();
+        patch.ultima_actualizacion = TODAY;
         patch.stale = false;
         ok = true;
       } catch (e) {

@@ -18,7 +18,8 @@ estado: cerrada
 fecha_apertura: 2026-04-07
 fecha_cierre: 2026-04-24
 duracion_ventana_dias: 18
-fuente_oficial: https://habitatge.gencat.cat/
+bdns_id: "895378"
+fuente_oficial: https://tramits.gencat.cat/ca/tramits/tramits-temes/20246_Subvencions-per-al-pagament-del-lloguer?moda=3
 organismo_ca: "Agència de l'Habitatge de Catalunya"
 organismo_es: Agencia de la Vivienda de Cataluña
 ultima_actualizacion: 2026-04-27
@@ -54,6 +55,6 @@ historico:
 
 # Subvenció lloguer · gent gran
 
-Per a persones de 65 anys o més
+Per a persones de 65 anys o més. Subvenció amb percentatge superior (fins al 60%) que la línia general 36-64.
 
-Font oficial: https://habitatge.gencat.cat/
+Font oficial: https://tramits.gencat.cat/ca/tramits/tramits-temes/20246_Subvencions-per-al-pagament-del-lloguer?moda=3
