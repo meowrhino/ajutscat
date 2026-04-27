@@ -1,55 +1,60 @@
 ---
 id: ajut-jove-compra
-nombre_ca: Compra habitatge · joves
-nombre_es: Compra vivienda · jóvenes
-subtitle_ca: Per a la compra del primer habitatge habitual
-subtitle_es: Para la compra de la primera vivienda habitual
+nombre_ca: Compra habitatge · joves (préstec ICF)
+nombre_es: Compra vivienda · jóvenes (préstamo ICF)
+subtitle_ca: "Préstec a 0% interès per al 20% del valor del primer habitatge — fins a 50.000 €"
+subtitle_es: "Préstamo al 0% de interés para el 20% del valor de la primera vivienda — hasta 50.000 €"
 categoria: vivienda
 subcategoria: compra
-cuantia_ca: "Fins a 10.800 € (20% preu)"
-cuantia_es: "Hasta 10.800 € (20% precio)"
-cuantia_total_max: 10800
+cuantia_ca: "Préstec 0% · 20% del valor (màx 50.000 €) · retorn en 5 anys després de la hipoteca"
+cuantia_es: "Préstamo 0% · 20% del valor (máx 50.000 €) · devolución en 5 años tras la hipoteca"
+cuantia_total_max: 50000
 edad_min: 18
 edad_max: 35
-ingresos_max: 37800
+ingresos_max: null
 ambito: catalunya
-zonas_especificas: 
-  - municipis de menys de 10.000 habitants
-estado: cerrada
-fecha_apertura: 2026-01-15
-fecha_cierre: 2026-02-28
-duracion_ventana_dias: 45
+zonas_especificas: []
+estado: abierta
+fecha_apertura: 2025-06-19
+fecha_cierre: 2099-12-31
+duracion_ventana_dias: 999
 bdns_id: "841440"
 fuente_oficial: https://www.icf.cat/ca/prestecs/habitatge/icf-habitatge-emancipacio
-organismo_ca: "Agència de l'Habitatge de Catalunya"
-organismo_es: Agencia de la Vivienda de Cataluña
+organismo_ca: "Institut Català de Finances (ICF) · Agència de l'Habitatge"
+organismo_es: Institut Català de Finances (ICF) · Agencia de la Vivienda
 ultima_actualizacion: 2026-04-27
 stale: false
 requisitos_ca:
-  - Menors de 36 anys.
-  - Primer habitatge habitual.
-  - Municipi de menys de 10.000 habitants.
-  - Preu de compra inferior a 120.000 €.
+  - Tenir entre 18 i 35 anys (inclosos) en el moment de la sol·licitud.
+  - Estar empadronat/da a Catalunya.
+  - "Primer habitatge habitual (no haver estat propietari/ària abans)."
+  - "Ingressos bruts anuals no superiors a 6,5 × IRSC ponderat (≈ 62.544 € persona sola; superior amb més membres a la unitat de convivència)."
+  - "L'habitatge passa a ser HPO (habitatge protegit) a preu limitat de manera permanent."
 requisitos_es:
-  - Menores de 36 años.
-  - Primera vivienda habitual.
-  - Municipio de menos de 10.000 habitantes.
-  - Precio de compra inferior a 120.000 €.
+  - Tener entre 18 y 35 años (incluidos) en el momento de la solicitud.
+  - Estar empadronado/a en Catalunya.
+  - "Primera vivienda habitual (no haber sido propietario/a antes)."
+  - "Ingresos brutos anuales no superiores a 6,5 × IRSC ponderado (≈ 62.544 € persona sola; superior con más miembros en la unidad de convivencia)."
+  - "La vivienda pasa a ser HPO (vivienda protegida) a precio limitado de forma permanente."
 documentacion_ca:
-  - DNI / NIE
-  - "Escriptura o contracte d'arres"
-  - Empadronament
-  - Declaració de renda
+  - DNI / NIE vigent
+  - "Contracte d'arres o oferta vinculant del banc"
+  - "Certificat d'empadronament"
+  - "Declaració de la renda dels últims 2 anys"
+  - "Certificat de no haver estat propietari/ària (Registre de la Propietat)"
 documentacion_es:
-  - DNI / NIE
-  - Escritura o contrato de arras
-  - Empadronamiento
-  - Declaración de renta
+  - DNI / NIE vigente
+  - Contrato de arras u oferta vinculante del banco
+  - Certificado de empadronamiento
+  - Declaración de la renta de los últimos 2 años
+  - "Certificado de no haber sido propietario/a (Registro de la Propiedad)"
 historico: []
 ---
 
-# Compra habitatge · joves
+# Compra habitatge · joves (préstec ICF)
 
-Per a la compra del primer habitatge habitual. Préstecs gestionats per l'Institut Català de Finances (ICF) en col·laboració amb l'Agència de l'Habitatge de Catalunya.
+**Important: és un préstec, no una subvenció a fons perdut.** L'Institut Català de Finances (ICF) presta el 20% del valor de l'habitatge (fins a 50.000 €) al 0% d'interès, complementant la hipoteca bancària. Es retorna en 5 anys un cop liquidada la hipoteca principal.
+
+L'habitatge comprat queda qualificat com a **HPO (Habitatge Protegit)** de manera permanent, amb preu màxim limitat per a futures vendes.
 
 Font oficial: https://www.icf.cat/ca/prestecs/habitatge/icf-habitatge-emancipacio

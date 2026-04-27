@@ -25,17 +25,17 @@ organismo_es: Agencia de la Vivienda de Cataluña
 ultima_actualizacion: 2026-04-27
 stale: false
 requisitos_ca:
-  - Tenir entre 18 i 35 anys (inclosos).
+  - Tenir fins a 35 anys (inclosos) en el moment de la sol·licitud.
   - Estar empadronat/da a Catalunya.
-  - Ingressos inferiors a 3× IRSC (≈ 25.200 €/any).
-  - Import del lloguer inferior a 900 € (Barcelona) o 600 € (resta).
-  - Ser titular del contracte de lloguer.
+  - Ingressos regulars no superiors a 25.200 € anuals.
+  - Import del lloguer inferior a 900 € (Barcelona) o 600 € (resta de Catalunya).
+  - Ser titular del contracte de lloguer (l'habitatge ha de ser habitual).
 requisitos_es:
-  - Tener entre 18 y 35 años (incluidos).
+  - Tener hasta 35 años (incluidos) en el momento de la solicitud.
   - Estar empadronado/a en Catalunya.
-  - Ingresos inferiores a 3× IRSC (≈ 25.200 €/año).
-  - Importe del alquiler inferior a 900 € (Barcelona) o 600 € (resto).
-  - Ser titular del contrato de alquiler.
+  - Ingresos regulares no superiores a 25.200 € anuales.
+  - Importe del alquiler inferior a 900 € (Barcelona) o 600 € (resto de Catalunya).
+  - Ser titular del contrato de alquiler (la vivienda debe ser habitual).
 documentacion_ca:
   - DNI / NIE vigent
   - Contracte de lloguer signat

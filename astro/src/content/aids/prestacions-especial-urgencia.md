@@ -2,52 +2,60 @@
 id: prestacions-especial-urgencia
 nombre_ca: Urgència habitatge
 nombre_es: Urgencia vivienda
-subtitle_ca: "Per a situacions de pèrdua d'habitatge o deutes"
-subtitle_es: Para situaciones de pérdida de vivienda o deudas
+subtitle_ca: "Pagament puntual per evitar la pèrdua de l'habitatge per impagament"
+subtitle_es: "Pago puntual para evitar la pérdida de la vivienda por impago"
 categoria: vivienda
 subcategoria: urgencia
-cuantia_ca: Fins a 3.000 € en un pagament únic
-cuantia_es: Hasta 3.000 € en un pago único
-cuantia_total_max: 3000
+cuantia_ca: "Fins a 4.500 € (deute lloguer o hipoteca) · 3.600 € + 800 € fiança (pèrdua d'habitatge)"
+cuantia_es: "Hasta 4.500 € (deuda alquiler o hipoteca) · 3.600 € + 800 € fianza (pérdida de vivienda)"
+cuantia_total_max: 4500
 edad_min: 18
 edad_max: 120
-ingresos_max: 22800
+ingresos_max: 19244
 ambito: catalunya
 zonas_especificas: []
 estado: abierta
-fecha_apertura: 2026-01-01
-fecha_cierre: 2026-12-31
-duracion_ventana_dias: 365
+fecha_apertura: 2024-01-01
+fecha_cierre: 2099-12-31
+duracion_ventana_dias: 999
 fuente_oficial: https://tramits.gencat.cat/ca/tramits/tramits-temes/Prestacions-economiques-despecial-urgencia-per-a-lhabitatge
 organismo_ca: "Agència de l'Habitatge de Catalunya"
 organismo_es: Agencia de la Vivienda de Cataluña
 ultima_actualizacion: 2026-04-27
-stale: true
+stale: false
 requisitos_ca:
-  - "Risc real d'exclusió residencial."
-  - Informe dels serveis socials.
-  - Ingressos baixos.
+  - "Trobar-se en risc d'exclusió residencial: deute de lloguer o hipoteca, o pèrdua imminent de l'habitatge habitual."
+  - "Ingressos no superiors a 2× IRSC ponderat (≈ 19.244 € persona sola; 2,5× ≈ 24.055 € amb ≥2 membres; 3× ≈ 28.866 € amb discapacitat)."
+  - Habitatge habitual a Catalunya.
+  - Informe favorable de serveis socials.
 requisitos_es:
-  - Riesgo real de exclusión residencial.
-  - Informe de servicios sociales.
-  - Ingresos bajos.
+  - "Encontrarse en riesgo de exclusión residencial: deuda de alquiler o hipoteca, o pérdida inminente de la vivienda habitual."
+  - "Ingresos no superiores a 2× IRSC ponderado (≈ 19.244 € persona sola; 2,5× ≈ 24.055 € con ≥2 miembros; 3× ≈ 28.866 € con discapacidad)."
+  - Vivienda habitual en Catalunya.
+  - Informe favorable de servicios sociales.
 documentacion_ca:
+  - DNI / NIE vigent
+  - Contracte de lloguer o escriptura hipotecària
+  - "Notificació de demanda judicial o requeriment d'impagament"
   - Informe de serveis socials
-  - DNI / NIE
-  - Contracte o sentència
-  - "Justificant d'ingressos"
+  - Justificant d'ingressos de la unitat de convivència
 documentacion_es:
+  - DNI / NIE vigente
+  - Contrato de alquiler o escritura hipotecaria
+  - Notificación de demanda judicial o requerimiento de impago
   - Informe de servicios sociales
-  - DNI / NIE
-  - Contrato o sentencia
-  - Justificante de ingresos
+  - Justificante de ingresos de la unidad de convivencia
 historico: []
 ---
 
 # Urgència habitatge
 
-Per a situacions de pèrdua d'habitatge o deutes. Pagament únic per cobrir lloguers endarrerits, hipoteques o canvi d'habitatge en situació d'urgència. Es tramita via serveis socials.
+Tres modalitats segons la situació:
 
-Procediment **permanent**: la Resolució TER/2024 que regula les bases està vigent indefinidament — per això no es lliga a cap `bdns_id` (BDNS només té entrades discretes per publicacions de bases, ≈cada 2-3 anys: 465939/2019, 545712/2021, 739780/2024).
+- **Deute de lloguer**: fins a 4.500 € per cobrir mensualitats endarrerides
+- **Deute d'hipoteca**: fins a 4.500 € per cobrir quotes hipotecàries impagades
+- **Pèrdua d'habitatge**: 60% de la renda anual del nou habitatge, màxim 3.600 €/any + fins a 800 € de fiança (un sol cop)
+
+Es tramita via serveis socials de l'ajuntament. Procediment **permanent**: la Resolució TER/4481/2023 modificada per TER/1017/2025 està vigent indefinidament.
 
 Font oficial: https://tramits.gencat.cat/ca/tramits/tramits-temes/Prestacions-economiques-despecial-urgencia-per-a-lhabitatge

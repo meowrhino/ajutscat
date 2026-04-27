@@ -7,9 +7,9 @@ subtitle_es: "Ayuda a la rehabilitación de interiores para incorporar viviendas
 categoria: vivienda
 subcategoria: rehabilitacio
 bdns_id: "880145"
-cuantia_ca: "Variable segons actuació (pressupost total 3 M€)"
-cuantia_es: "Variable según actuación (presupuesto total 3 M€)"
-cuantia_total_max: null
+cuantia_ca: "100% del cost · fins a 30.000 €/habitatge (mínim 500 €)"
+cuantia_es: "100% del coste · hasta 30.000 €/vivienda (mínimo 500 €)"
+cuantia_total_max: 30000
 edad_min: 18
 edad_max: 120
 ingresos_max: null
@@ -25,7 +25,6 @@ organismo_ca: "Consorci de l'Habitatge de Barcelona"
 organismo_es: Consorcio de la Vivienda de Barcelona
 ultima_actualizacion: 2026-04-27
 stale: false
-draft: true
 requisitos_ca:
   - Habitatge situat a Barcelona ciutat.
   - "Compromís d'incorporar l'habitatge a la Borsa de Lloguer o a programes de cessió."
@@ -54,6 +53,6 @@ fetcher_last_ok: 2026-04-27T09:56:20.202Z
 
 # Rehabilitar interior · Borsa BCN
 
-Ajut plurianual a la rehabilitació d'interiors d'habitatges que s'incorporaran a la Borsa de Lloguer de Barcelona o a programes de cessió del mercat privat.
+Ajut plurianual a propietaris que rehabilitin l'interior d'un habitatge i el cedeixin durant 6 anys a la **Borsa de Lloguer de Barcelona**, a la **Mesa d'emergències** o al programa **Primer la Llar**. Cobreix el 100% del cost, fins a 30.000 €/habitatge (mínim 500 €). Termini: fins al 30 de novembre de 2026; les obres han de finalitzar abans del 30 d'octubre de 2027.
 
 Font oficial: https://www.habitatge.barcelona/ca/ajuts-rehabilitacio-interior-habitatges-borsa-lloguer

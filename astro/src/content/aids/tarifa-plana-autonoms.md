@@ -7,9 +7,9 @@ subtitle_es: Cuota reducida a 80 €/mes durante el primer año de alta
 categoria: autonomos
 subcategoria: alta
 bdns_id: ""
-cuantia_ca: 80 €/mes el primer any (estalvi ≈ 3.000 €)
-cuantia_es: 80 €/mes el primer año (ahorro ≈ 3.000 €)
-cuantia_total_max: 3000
+cuantia_ca: "80 €/mes durant 12 mesos · prorrogable 12 més si rendiments < SMI"
+cuantia_es: "80 €/mes durante 12 meses · prorrogable 12 más si rendimientos < SMI"
+cuantia_total_max: 2760
 edad_min: 18
 edad_max: 120
 ingresos_max: null
@@ -53,4 +53,8 @@ historico: []
 
 # Tarifa plana · autònoms
 
-Quota reduïda a 80 €/mes durant el primer any d'alta al RETA.
+Quota reduïda a **80 €/mes durant 12 mesos** d'alta al RETA. Es pot **prorrogar 12 mesos més** si els rendiments nets esperats són inferiors al Salari Mínim Interprofessional (SMI 2026 ≈ 16.576 €/any).
+
+L'estalvi real és d'aproximadament **2.760 €** el primer any (diferència entre els 80 € de la tarifa plana i la quota mínima general d'uns 230 €/mes per a autònoms en el tram inferior d'ingressos).
+
+⚠️ **2026 amb regulació pendent**: el RD-Llei 16/2025 prorroga la mesura provisionalment fins que s'aprovi la Llei de Pressupostos Generals de l'Estat 2026, que establirà la quantia definitiva.
