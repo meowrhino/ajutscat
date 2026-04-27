@@ -67,7 +67,7 @@ historico:
     apertura: 2026-03-09
     cierre: 2026-03-13
     dias: 5
-fetcher_last_ok: 2026-04-27T08:12:22.079Z
+fetcher_last_ok: 2026-04-27T09:56:19.951Z
 ---
 
 # Bo Lloguer Jove

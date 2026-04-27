@@ -49,7 +49,7 @@ documentacion_es:
   - Fotografías del estado previo
   - Compromiso de incorporación a la Bolsa
 historico: []
-fetcher_last_ok: 2026-04-27T08:12:22.395Z
+fetcher_last_ok: 2026-04-27T09:56:20.202Z
 ---
 
 # Rehabilitació interiors · Borsa BCN
