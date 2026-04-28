@@ -23,7 +23,7 @@ fuente_oficial: https://www.icf.cat/ca/prestecs/habitatge/icf-habitatge-emancipa
 organismo_ca: "Institut Català de Finances (ICF) · Agència de l'Habitatge"
 organismo_es: Institut Català de Finances (ICF) · Agencia de la Vivienda
 ultima_actualizacion: 2026-04-27
-stale: false
+stale: true
 requisitos_ca:
   - Tenir entre 18 i 35 anys (inclosos) en el moment de la sol·licitud.
   - Estar empadronat/da a Catalunya.

@@ -24,7 +24,7 @@ fuente_oficial: https://www.habitatge.barcelona/ca/serveis-ajuts/lloguer/subvenc
 organismo_ca: "Agència de l'Habitatge de Catalunya (via Consorci BCN)"
 organismo_es: Agencia de la Vivienda de Cataluña (vía Consorci BCN)
 ultima_actualizacion: 2026-04-27
-stale: false
+stale: true
 requisitos_ca:
   - Residència a Barcelona ciutat (habitatge habitual).
   - "Pertànyer a un col·lectiu vulnerable: emergència econòmica i social, risc d'exclusió residencial."

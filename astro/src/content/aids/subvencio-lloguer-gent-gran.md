@@ -15,14 +15,14 @@ ingresos_max: 25200
 ambito: catalunya
 zonas_especificas: []
 estado: abierta
-fecha_apertura: 2026-03-31
+fecha_apertura: 2026-03-26
 fecha_cierre: 2026-04-30
-duracion_ventana_dias: 31
+duracion_ventana_dias: 36
 bdns_id: "895378"
 fuente_oficial: https://tramits.gencat.cat/ca/tramits/tramits-temes/20246_Subvencions-per-al-pagament-del-lloguer?moda=3
 organismo_ca: "Agència de l'Habitatge de Catalunya"
 organismo_es: Agencia de la Vivienda de Cataluña
-ultima_actualizacion: 2026-04-27
+ultima_actualizacion: 2026-04-28
 stale: false
 requisitos_ca:
   - Tenir 65 anys o més (a 31 de gener de 2026).
@@ -47,6 +47,7 @@ documentacion_es:
   - Certificado de empadronamiento
   - Pensión o justificante de ingresos
 historico: []
+fetcher_last_ok: 2026-04-28T08:14:00.695Z
 ---
 
 # Lloguer · 65+
