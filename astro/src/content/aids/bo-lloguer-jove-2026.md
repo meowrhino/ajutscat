@@ -22,7 +22,7 @@ fuente_oficial: https://tramits.gencat.cat/ca/tramits/tramits-temes/22866_Bo_llo
 bdns_id: "890390"
 organismo_ca: "Agència de l'Habitatge de Catalunya"
 organismo_es: Agencia de la Vivienda de Cataluña
-ultima_actualizacion: 2026-05-04
+ultima_actualizacion: 2026-05-05
 stale: false
 requisitos_ca:
   - Tenir fins a 35 anys (inclosos) en el moment de la sol·licitud.
@@ -51,7 +51,7 @@ documentacion_es:
   - Declaración de la renta (o certificado de imputaciones)
   - Certificado bancario de titularidad de la cuenta
 historico: []
-fetcher_last_ok: 2026-05-04T08:22:58.111Z
+fetcher_last_ok: 2026-05-05T08:00:55.710Z
 ---
 
 # Bo Lloguer Jove
