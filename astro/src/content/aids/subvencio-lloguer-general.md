@@ -14,7 +14,7 @@ edad_max: 64
 ingresos_max: 36279
 ambito: catalunya
 zonas_especificas: []
-estado: abierta
+estado: cerrada
 fecha_apertura: 2026-03-30
 fecha_cierre: 2026-05-08
 duracion_ventana_dias: 40
@@ -22,7 +22,7 @@ bdns_id: "896205"
 fuente_oficial: https://tramits.gencat.cat/ca/tramits/tramits-temes/20246_Subvencions-per-al-pagament-del-lloguer?moda=2
 organismo_ca: "Agència de l'Habitatge de Catalunya"
 organismo_es: Agencia de la Vivienda de Cataluña
-ultima_actualizacion: 2026-05-08
+ultima_actualizacion: 2026-05-09
 stale: false
 requisitos_ca:
   - Tenir entre 36 i 64 anys (a 31 de gener de 2026).
@@ -47,7 +47,7 @@ documentacion_es:
   - Certificado de empadronamiento
   - Justificante de ingresos (declaración de la renta o equivalente)
 historico: []
-fetcher_last_ok: 2026-05-08T07:21:22.749Z
+fetcher_last_ok: 2026-05-09T07:48:41.575Z
 ---
 
 # Lloguer · 36-64
