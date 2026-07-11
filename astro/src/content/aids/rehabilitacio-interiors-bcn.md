@@ -23,7 +23,7 @@ duracion_ventana_dias: 328
 fuente_oficial: https://www.habitatge.barcelona/ca/ajuts-rehabilitacio-interior-habitatges-borsa-lloguer
 organismo_ca: "Consorci de l'Habitatge de Barcelona"
 organismo_es: Consorcio de la Vivienda de Barcelona
-ultima_actualizacion: 2026-07-10
+ultima_actualizacion: 2026-07-11
 stale: false
 requisitos_ca:
   - Habitatge situat a Barcelona ciutat.
@@ -48,7 +48,7 @@ documentacion_es:
   - Fotografías del estado previo
   - Compromiso de incorporación a la Bolsa
 historico: []
-fetcher_last_ok: 2026-07-10T09:23:53.388Z
+fetcher_last_ok: 2026-07-11T07:45:14.366Z
 ---
 
 # Rehabilitar interior · Borsa BCN
