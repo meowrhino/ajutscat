@@ -14,7 +14,7 @@ edad_max: 35
 ingresos_max: 25200
 ambito: catalunya
 zonas_especificas: []
-estado: abierta
+estado: cerrada
 fecha_apertura: 2026-06-15
 fecha_cierre: 2026-07-15
 duracion_ventana_dias: 31
