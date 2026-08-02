@@ -22,7 +22,7 @@ bdns_id: "895378"
 fuente_oficial: https://tramits.gencat.cat/ca/tramits/tramits-temes/20246_Subvencions-per-al-pagament-del-lloguer?moda=3
 organismo_ca: "Agència de l'Habitatge de Catalunya"
 organismo_es: Agencia de la Vivienda de Cataluña
-ultima_actualizacion: 2026-07-31
+ultima_actualizacion: 2026-08-02
 stale: false
 requisitos_ca:
   - Tenir 65 anys o més (a 31 de gener de 2026).
@@ -47,7 +47,7 @@ documentacion_es:
   - Certificado de empadronamiento
   - Pensión o justificante de ingresos
 historico: []
-fetcher_last_ok: 2026-07-31T08:39:51.617Z
+fetcher_last_ok: 2026-08-02T08:11:22.820Z
 archivada: true
 ---
 
