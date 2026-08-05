@@ -22,7 +22,7 @@ bdns_id: "896205"
 fuente_oficial: https://tramits.gencat.cat/ca/tramits/tramits-temes/20246_Subvencions-per-al-pagament-del-lloguer?moda=2
 organismo_ca: "Agència de l'Habitatge de Catalunya"
 organismo_es: Agencia de la Vivienda de Cataluña
-ultima_actualizacion: 2026-08-04
+ultima_actualizacion: 2026-08-05
 stale: false
 requisitos_ca:
   - Tenir entre 36 i 64 anys (a 31 de gener de 2026).
@@ -47,7 +47,7 @@ documentacion_es:
   - Certificado de empadronamiento
   - Justificante de ingresos (declaración de la renta o equivalente)
 historico: []
-fetcher_last_ok: 2026-08-04T08:26:37.766Z
+fetcher_last_ok: 2026-08-05T08:25:33.523Z
 ---
 
 # Lloguer · 36-64
