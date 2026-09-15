@@ -14,7 +14,7 @@ edad_max: 120
 ingresos_max: 44682
 ambito: catalunya
 zonas_especificas: []
-estado: proxima
+estado: abierta
 fecha_apertura: 2026-09-15
 fecha_cierre: 2026-10-31
 duracion_ventana_dias: 46
