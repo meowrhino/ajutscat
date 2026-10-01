@@ -16,7 +16,7 @@ ingresos_max: null
 ambito: barcelona
 zonas_especificas:
   - Barcelona ciutat
-estado: abierta
+estado: cerrada
 fecha_apertura: 2026-02-09
 fecha_cierre: 2026-09-30
 duracion_ventana_dias: 233
