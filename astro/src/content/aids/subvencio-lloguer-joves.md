@@ -47,6 +47,7 @@ documentacion_es:
   - Certificado de empadronamiento
   - Justificante de ingresos (declaración de la renta o equivalente)
 historico: []
+archivada: true
 ---
 
 # Lloguer · joves <36
